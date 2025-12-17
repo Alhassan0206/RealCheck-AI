@@ -1,0 +1,224 @@
+You are a senior mobile engineer and backend architect.
+
+You are **continuing an existing project**, not starting from scratch.
+
+---
+
+## SOURCE OF TRUTH
+
+* Product Requirements Document: **`Requirements.md`**
+* Treat `Requirements.md` as **authoritative**.
+* If any ambiguity exists, **defer to `Requirements.md`**.
+* Do NOT invent features not in the PRD.
+
+---
+
+## CONTEXT
+
+* All **25 mobile app screens are already created**.
+* UI layout and navigation decisions are finalized.
+* Your task is to **implement functionality only**.
+
+This is a **mobile application**, not a web app.
+
+---
+
+## FIXED TECH STACK (DO NOT CHANGE)
+
+Frontend:
+
+* React Native
+* React Navigation (Bottom Tabs + Stack)
+
+Backend:
+
+* Node.js + Express
+* REST APIs
+* JWT authentication
+
+Third-party services:
+
+1. Poster/Flyer Generation → Replicate, OpenAI, Nano Banana
+2. Authenticity Detection → Hive AI
+3. Authentication → Google OAuth
+4. Payments → Stripe + Paystack
+5. Storage → Supabase Storage
+6. Analytics → Firebase
+7. Image Processing → remove.bg
+
+---
+
+## NAVIGATION RULES (STRICT)
+
+* Bottom tabs:
+  `[Home] [Scan] [Create] [History] [Profile]`
+* Bottom navigation appears **only after login**
+* Bottom navigation is hidden on:
+
+  * Splash
+  * Welcome
+  * Sign-In
+  * Full-screen Editor
+  * Checkout
+* Each tab uses its own stack navigator
+
+---
+
+## SCREEN IMPLEMENTATION SCOPE
+
+Implement logic for **all 25 screens** exactly as defined in `Requirements.md`.
+
+**Pre-Auth (no bottom nav)**
+
+1. Splash
+2. Welcome / Intro
+3. Sign In (Google OAuth)
+
+**Post-Auth (with bottom nav)**
+4. Home Dashboard
+5. Notifications
+6. Credit Status
+
+**Scan Tab**
+7. Scan Upload
+8. Scan Processing
+9. Scan Result
+10. Scan Detail
+
+**Create Tab**
+11. Create Entry
+12. Template / Style Selection
+13. Prompt & Brand Input
+14. Generation Processing
+15. Preview Output
+16. Editor (full-screen)
+17. Save & Share
+
+**History Tab**
+18. History Overview
+19. History Detail
+20. Bulk Actions
+
+**Profile Tab**
+21. Profile Overview
+22. Brand Kit List
+23. Brand Kit Editor
+24. Subscription & Billing
+25. Settings & Support
+
+---
+
+## EXECUTION PLAN (MANDATORY ORDER)
+
+### STEP 1 — PROJECT AUDIT
+
+* Read the repository
+* Compare implemented features against `Requirements.md`
+* Output a checklist:
+
+  * Implemented
+  * Partially implemented
+  * Missing
+
+⛔ Do NOT write code yet.
+
+---
+
+### STEP 2 — BACKEND FOUNDATION
+
+Implement backend modules:
+
+* Auth (Google OAuth → JWT)
+* Users
+* Credits
+* AI Requests
+* Storage
+* Payments
+* Webhooks
+
+Expose REST APIs.
+
+---
+
+### STEP 3 — FRONTEND INTEGRATION
+
+* Connect screens to APIs
+* Wire navigation flows
+* Implement loading & error states
+* Respect bottom-nav visibility rules
+
+---
+
+### STEP 4 — AI FLOWS
+
+Implement:
+
+* Poster generation pipeline
+* Authenticity scan pipeline
+* Image upload + processing pipeline
+* Provider fallback logic
+
+---
+
+### STEP 5 — PAYMENTS & CREDITS
+
+* Stripe + Paystack integration
+* Credit deduction per action
+* Free vs paid enforcement
+* Webhook validation
+
+---
+
+### STEP 6 — STORAGE & ANALYTICS
+
+* Upload assets to Supabase
+* Track events in Firebase
+* Persist scan & design history
+
+---
+
+### STEP 7 — HARDENING
+
+* Error handling
+* Rate limiting
+* Timeout & retry logic
+* Secure API keys
+
+---
+
+### STEP 8 — FINAL OUTPUT
+
+* Fully functional app
+* Fully functional backend
+* `.env.example`
+* API documentation
+* Setup instructions
+
+---
+
+## RULES
+
+* Do NOT redesign UI
+* Do NOT rename screens
+* Do NOT add features
+* Do NOT skip steps
+* Ask questions **only if blocked**
+
+---
+
+## START
+
+Begin with **STEP 1: Project Audit**
+Output **only the audit checklist**.
+
+---
+
+## 🔑 Why This Will Work
+
+* The agent is **forced to read `Requirements.md`**
+* No hallucinated features
+* Execution order is locked
+* UI is protected
+* Architecture remains intact
+
+
