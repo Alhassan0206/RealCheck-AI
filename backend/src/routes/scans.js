@@ -1,48 +1,106 @@
 const express = require('express');
+const { db } = require('../db');
+const { scans, users, creditTransactions } = require('../schema');
+const { eq, desc } = require('drizzle-orm');
+const { authMiddleware } = require('../middleware/auth');
+
 const router = express.Router();
 
-const scans = [
-  {
-    id: '388',
-    imageUrl: 'https://lh3.googleusercontent.com/aida-public/AB6AXuCk4gFPdLi7Fcc03ZFQ9d8yYzErFQ2J7OZQ6n_rCN-MUJuYHas_4qDSQelA3n5Grlq1tRjB1AGru-Hjb9kJvw9sfpMDmlRBru9E5AzhbMXE8goJ_7QtVwkPNmVmyHgjwpN3cPsj3IIeLnaKhMGoEB8Hzvfky1zGX4Uu90KHt1QeGlRSqEnogM3r-9KRsp86tTBlrkT7JxheQ6R29i3Ivs781L_3u1-PpleSp2TLqYD08sZFFmueeGNSKUotWR34IlLOxzwoasTFfCE',
-    result: 'fake',
-    confidence: 23,
-    createdAt: '2025-12-15T10:30:00Z',
-    metadata: { type: 'product', category: 'electronics' }
-  },
-  {
-    id: '166',
-    imageUrl: 'https://lh3.googleusercontent.com/aida-public/AB6AXuBEf7FRTa4h4RnB-_a37vFMJ4-lEF31Blev8zubXBXxsDXWrMswNFVPosLU2bh9bBdSiyn-ZmMop1TGgOGHaC3ROJnl3uUMnpCE66Ra8HYBvc8BhMYsJmjbelvTyGd8dHzZd6IRZ_2TTMJ-aq1veNXTMzuFDKAZU6sqOey81dCtjT9T3x0XJqFH37Fomuq9W5oZhwNcQJTjySycCA3RP_olkvlwa8_Gol0SYC6QujHYp-VO8H7CLPTeNnSM0TeRZ22HbaQNE4XVwYE',
-    result: 'authentic',
-    confidence: 94,
-    createdAt: '2025-12-15T09:15:00Z',
-    metadata: { type: 'document', category: 'certificate' }
-  }
-];
+router.get('/', authMiddleware, async (req, res) => {
+  try {
+    const userScans = await db.select()
+      .from(scans)
+      .where(eq(scans.userId, req.userId))
+      .orderBy(desc(scans.createdAt))
+      .limit(50);
 
-router.get('/', (req, res) => {
-  res.json(scans);
+    res.json(userScans);
+  } catch (error) {
+    console.error('Get scans error:', error);
+    res.status(500).json({ error: 'Failed to get scans' });
+  }
 });
 
-router.get('/:id', (req, res) => {
-  const scan = scans.find(s => s.id === req.params.id);
-  if (!scan) {
-    return res.status(404).json({ error: 'Scan not found' });
+router.get('/:id', authMiddleware, async (req, res) => {
+  try {
+    const [scan] = await db.select()
+      .from(scans)
+      .where(eq(scans.id, parseInt(req.params.id)));
+
+    if (!scan || scan.userId !== req.userId) {
+      return res.status(404).json({ error: 'Scan not found' });
+    }
+
+    res.json(scan);
+  } catch (error) {
+    console.error('Get scan error:', error);
+    res.status(500).json({ error: 'Failed to get scan' });
   }
-  res.json(scan);
 });
 
-router.post('/analyze', async (req, res) => {
-  const newScan = {
-    id: Date.now().toString(),
-    imageUrl: req.body.imageUrl || '',
-    result: Math.random() > 0.5 ? 'authentic' : 'fake',
-    confidence: Math.floor(Math.random() * 40) + 60,
-    createdAt: new Date().toISOString(),
-    metadata: { type: 'product' }
-  };
-  scans.unshift(newScan);
-  res.json(newScan);
+router.post('/analyze', authMiddleware, async (req, res) => {
+  try {
+    const { imageUrl, imageData, category } = req.body;
+
+    if (req.user.credits < 1) {
+      return res.status(402).json({ error: 'Insufficient credits' });
+    }
+
+    const isAuthentic = Math.random() > 0.3;
+    const confidence = isAuthentic 
+      ? Math.floor(Math.random() * 20) + 80
+      : Math.floor(Math.random() * 30) + 10;
+
+    const [newScan] = await db.insert(scans).values({
+      userId: req.userId,
+      imageUrl: imageUrl || '',
+      result: isAuthentic ? 'authentic' : 'fake',
+      confidence,
+      metadata: { 
+        category: category || 'general',
+        analyzedAt: new Date().toISOString()
+      }
+    }).returning();
+
+    const newCredits = req.user.credits - 1;
+    await db.update(users)
+      .set({ credits: newCredits, updatedAt: new Date() })
+      .where(eq(users.id, req.userId));
+
+    await db.insert(creditTransactions).values({
+      userId: req.userId,
+      amount: -1,
+      action: 'scan',
+      description: `Authenticity scan - ${newScan.result}`,
+      balanceAfter: newCredits
+    });
+
+    res.json({
+      ...newScan,
+      creditsRemaining: newCredits
+    });
+  } catch (error) {
+    console.error('Analyze error:', error);
+    res.status(500).json({ error: 'Failed to analyze image' });
+  }
+});
+
+router.delete('/:id', authMiddleware, async (req, res) => {
+  try {
+    const [scan] = await db.select()
+      .from(scans)
+      .where(eq(scans.id, parseInt(req.params.id)));
+
+    if (!scan || scan.userId !== req.userId) {
+      return res.status(404).json({ error: 'Scan not found' });
+    }
+
+    await db.delete(scans).where(eq(scans.id, parseInt(req.params.id)));
+    res.json({ success: true, message: 'Scan deleted' });
+  } catch (error) {
+    console.error('Delete scan error:', error);
+    res.status(500).json({ error: 'Failed to delete scan' });
+  }
 });
 
 module.exports = router;

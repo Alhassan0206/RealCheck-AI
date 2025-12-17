@@ -1,21 +1,66 @@
 const express = require('express');
+const { db } = require('../db');
+const { users } = require('../schema');
+const { eq } = require('drizzle-orm');
+const { authMiddleware } = require('../middleware/auth');
+
 const router = express.Router();
 
-router.get('/profile', (req, res) => {
-  res.json({
-    id: '1',
-    name: 'Alex Morgan',
-    email: 'alex@example.com',
-    picture: 'https://lh3.googleusercontent.com/aida-public/AB6AXuBGZLwCW3ZmHkpW1U0tZxFQKPXY6ywdm0L4o5TwunpzG6J_JFM8ygD5mNpzieojlIFA3Uy7DsniO2rnIGszGYjj-TB1OGRRWNLhhInQdpceDe2uhC91uI8MX2UY7--pNGqEj2liZBYzD5DBlyh6JT43XsXGC7DTIW__WhgmY_I2CXdtF25nOJqtuC5tGhvWBNQaal1iNNUcnrCJKUOm6oPruyk-uKg6WCKr0bcloo2rDxJt-hlnxPjtD0AUZs1IOccRNWsJLc2sVz4',
-    credits: 44,
-    plan: 'Pro',
-    createdAt: '2024-01-15'
-  });
+router.get('/profile', authMiddleware, async (req, res) => {
+  try {
+    res.json({
+      id: req.user.id,
+      email: req.user.email,
+      name: req.user.name,
+      picture: req.user.picture,
+      credits: req.user.credits,
+      plan: req.user.plan,
+      createdAt: req.user.createdAt
+    });
+  } catch (error) {
+    console.error('Get profile error:', error);
+    res.status(500).json({ error: 'Failed to get profile' });
+  }
 });
 
-router.put('/profile', (req, res) => {
-  const { name, email } = req.body;
-  res.json({ success: true, message: 'Profile updated' });
+router.put('/profile', authMiddleware, async (req, res) => {
+  try {
+    const { name, picture } = req.body;
+    
+    const updateData = { updatedAt: new Date() };
+    if (name) updateData.name = name;
+    if (picture) updateData.picture = picture;
+
+    const [updatedUser] = await db.update(users)
+      .set(updateData)
+      .where(eq(users.id, req.userId))
+      .returning();
+
+    res.json({ 
+      success: true, 
+      user: {
+        id: updatedUser.id,
+        email: updatedUser.email,
+        name: updatedUser.name,
+        picture: updatedUser.picture,
+        credits: updatedUser.credits,
+        plan: updatedUser.plan
+      }
+    });
+  } catch (error) {
+    console.error('Update profile error:', error);
+    res.status(500).json({ error: 'Failed to update profile' });
+  }
+});
+
+router.delete('/account', authMiddleware, async (req, res) => {
+  try {
+    await db.delete(users).where(eq(users.id, req.userId));
+    res.json({ success: true, message: 'Account deleted' });
+  } catch (error) {
+    console.error('Delete account error:', error);
+    res.status(500).json({ error: 'Failed to delete account' });
+  }
 });
 
 module.exports = router;
