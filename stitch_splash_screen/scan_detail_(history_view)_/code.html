@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Scan Detail - History View</title>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#13b6ec",
+                        "background-light": "#f6f8f8",
+                        "background-dark": "#101d22",
+                        "surface-dark": "#1a2c32",
+                        "surface-light": "#ffffff",
+                    },
+                    fontFamily: {
+                        "display": ["Manrope", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .icon-filled {
+            font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-white transition-colors duration-200">
+<div class="relative flex min-h-screen w-full flex-col overflow-x-hidden pb-24">
+<!-- Navigation Bar -->
+<header class="sticky top-0 z-50 flex items-center justify-between px-4 py-3 backdrop-blur-md bg-background-light/80 dark:bg-background-dark/80 border-b border-transparent dark:border-slate-800/50">
+<button class="flex size-10 items-center justify-center rounded-full hover:bg-slate-200 dark:hover:bg-slate-800 transition-colors">
+<span class="material-symbols-outlined text-slate-900 dark:text-white">chevron_left</span>
+</button>
+<h2 class="text-lg font-bold leading-tight tracking-[-0.015em] text-center">Scan History</h2>
+<button class="flex size-10 items-center justify-center rounded-full hover:bg-slate-200 dark:hover:bg-slate-800 transition-colors">
+<span class="material-symbols-outlined text-slate-900 dark:text-white">ios_share</span>
+</button>
+</header>
+<!-- Spacer -->
+<div class="h-4"></div>
+<!-- Profile/Hero Section -->
+<section class="flex flex-col items-center px-6">
+<div class="relative mb-6 group">
+<div class="absolute -inset-1 rounded-2xl bg-gradient-to-b from-primary/50 to-transparent blur-sm opacity-20 group-hover:opacity-40 transition-opacity"></div>
+<div class="relative bg-center bg-no-repeat bg-cover rounded-2xl aspect-square w-48 shadow-2xl ring-1 ring-slate-900/10 dark:ring-white/10" data-alt="Nike Air Jordan 1 High sneaker side view on dark background" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAddxdQkD0xZv8Yo90iDsawlpriECLmapxw9lyW5HwTDc0zmhpsDexzkDbliaeAlWv4Xt8x4ReaHpPxneKY2xm-yCEhcSKm5OxjqUnPK9vwlpLRSdSLKjQKhWB-TJXRhls2UsBc7cge4kJ-i0RBbl1LbFTyS30duW9hx1kaF4yto_VRm8ROF2ArDtWD6QOQZ2HeHm5V2K1B2JOYs_vakA728jRgUoJD1scusY4dHCbPsExSdEm-g7jvnkRM50LVpH7kP4S-24U_JuI");'>
+</div>
+<!-- Status Badge Overlay -->
+<div class="absolute -bottom-3 left-1/2 -translate-x-1/2 whitespace-nowrap flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-surface-light dark:bg-surface-dark shadow-lg border border-slate-200 dark:border-slate-700">
+<span class="material-symbols-outlined text-primary text-[20px] icon-filled">verified</span>
+<span class="text-sm font-bold text-slate-900 dark:text-white">Authentic</span>
+</div>
+</div>
+<div class="flex flex-col items-center justify-center gap-1 text-center mt-2">
+<h1 class="text-2xl font-extrabold tracking-tight text-slate-900 dark:text-white">Nike Air Jordan 1</h1>
+<p class="text-slate-500 dark:text-slate-400 text-sm font-medium">Verified on Oct 24, 2023 at 14:32</p>
+</div>
+</section>
+<!-- Divider -->
+<div class="h-8"></div>
+<!-- Product Metadata Section -->
+<section>
+<h3 class="px-6 pb-3 text-lg font-bold text-slate-900 dark:text-white flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">info</span>
+                Product Metadata
+            </h3>
+<div class="mx-4 overflow-hidden rounded-xl bg-surface-light dark:bg-surface-dark border border-slate-200 dark:border-slate-800">
+<div class="grid grid-cols-2">
+<div class="flex flex-col gap-1 p-4 border-r border-b border-slate-200 dark:border-slate-700/50">
+<p class="text-slate-500 dark:text-slate-400 text-xs font-medium uppercase tracking-wider">Brand</p>
+<p class="text-slate-900 dark:text-white text-base font-semibold">Nike</p>
+</div>
+<div class="flex flex-col gap-1 p-4 border-b border-slate-200 dark:border-slate-700/50">
+<p class="text-slate-500 dark:text-slate-400 text-xs font-medium uppercase tracking-wider">Model</p>
+<p class="text-slate-900 dark:text-white text-base font-semibold">Air Jordan 1</p>
+</div>
+<div class="flex flex-col gap-1 p-4 border-r border-slate-200 dark:border-slate-700/50">
+<p class="text-slate-500 dark:text-slate-400 text-xs font-medium uppercase tracking-wider">Serial Number</p>
+<p class="text-slate-900 dark:text-white text-base font-semibold tracking-tight font-mono">SN-83920183</p>
+</div>
+<div class="flex flex-col gap-1 p-4">
+<p class="text-slate-500 dark:text-slate-400 text-xs font-medium uppercase tracking-wider">Batch ID</p>
+<p class="text-slate-900 dark:text-white text-base font-semibold font-mono">BATCH-22A</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Spacer -->
+<div class="h-6"></div>
+<!-- Digital Ledger Section -->
+<section>
+<h3 class="px-6 pb-3 text-lg font-bold text-slate-900 dark:text-white flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">fingerprint</span>
+                Digital Ledger
+            </h3>
+<div class="px-4 space-y-3">
+<!-- Blockchain Hash Card -->
+<div class="flex items-center gap-4 p-4 rounded-xl bg-surface-light dark:bg-surface-dark border border-slate-200 dark:border-slate-800 shadow-sm">
+<div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-primary/10">
+<span class="material-symbols-outlined text-primary">token</span>
+</div>
+<div class="flex-1 min-w-0">
+<p class="text-xs text-slate-500 dark:text-slate-400 font-medium mb-0.5">Token Hash</p>
+<p class="text-sm font-mono text-slate-900 dark:text-white truncate">0x71C7656EC7ab88b098defB751B7401B5f6d8976F</p>
+</div>
+<button class="shrink-0 text-slate-400 hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-[20px]">content_copy</span>
+</button>
+</div>
+<!-- Trust Block -->
+<div class="flex items-center gap-3 px-4 py-3 rounded-xl bg-blue-500/5 dark:bg-blue-900/10 border border-blue-200/50 dark:border-blue-500/10">
+<span class="material-symbols-outlined text-primary text-sm">lock</span>
+<p class="text-xs text-slate-600 dark:text-slate-300 font-medium">Secured by Brand Design Studio Blockchain</p>
+</div>
+</div>
+</section>
+<!-- Floating Action Footer -->
+<div class="fixed bottom-0 left-0 right-0 z-40 p-4 bg-gradient-to-t from-background-light via-background-light to-transparent dark:from-background-dark dark:via-background-dark pt-8">
+<button class="flex w-full items-center justify-center gap-2 rounded-xl bg-primary h-14 px-6 text-white shadow-lg shadow-primary/25 hover:bg-primary/90 hover:scale-[1.01] active:scale-[0.98] transition-all duration-200">
+<span class="material-symbols-outlined">qr_code_scanner</span>
+<span class="text-base font-bold">Re-run Scan</span>
+</button>
+</div>
+</div>
+</body></html>

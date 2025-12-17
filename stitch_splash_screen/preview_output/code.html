@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Preview Output</title>
+<!-- Google Fonts: Manrope -->
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Theme Configuration -->
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#13b6ec",
+                        "background-light": "#f6f8f8",
+                        "background-dark": "#101d22",
+                        "surface-dark": "#1a2c32",
+                    },
+                    fontFamily: {
+                        "display": ["Manrope", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "2xl": "1rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        /* Hide scrollbar for clean UI */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-white font-display antialiased selection:bg-primary/30">
+<div class="relative flex h-full min-h-screen w-full flex-col overflow-x-hidden pb-24">
+<!-- Sticky Header -->
+<header class="sticky top-0 z-50 flex items-center bg-background-light/95 dark:bg-background-dark/95 backdrop-blur-md px-4 py-3 justify-between border-b border-slate-200 dark:border-slate-800/50">
+<button class="text-slate-900 dark:text-white flex size-10 shrink-0 items-center justify-center rounded-full hover:bg-slate-200 dark:hover:bg-white/10 transition-colors">
+<span class="material-symbols-outlined">arrow_back</span>
+</button>
+<h2 class="text-slate-900 dark:text-white text-lg font-bold leading-tight tracking-[-0.015em]">Design Preview</h2>
+<div class="size-10"></div> <!-- Spacer for visual centering -->
+</header>
+<!-- Sub-header BodyText -->
+<div class="px-4 pt-6 pb-2">
+<p class="text-slate-600 dark:text-slate-400 text-base font-normal leading-normal">
+                3 variations generated based on your scan.
+            </p>
+</div>
+<!-- Filter Chips -->
+<div class="flex gap-3 px-4 pb-6 overflow-x-auto no-scrollbar">
+<button class="flex h-9 shrink-0 items-center justify-center gap-x-2 rounded-lg bg-primary/10 border border-primary/40 pl-4 pr-4 transition-all hover:bg-primary/20">
+<p class="text-primary text-sm font-semibold leading-normal">Modern</p>
+</button>
+<button class="flex h-9 shrink-0 items-center justify-center gap-x-2 rounded-lg bg-slate-200 dark:bg-surface-dark border border-transparent dark:border-white/5 pl-4 pr-4 transition-all hover:bg-slate-300 dark:hover:bg-white/5">
+<p class="text-slate-600 dark:text-slate-300 text-sm font-medium leading-normal">Classic</p>
+</button>
+<button class="flex h-9 shrink-0 items-center justify-center gap-x-2 rounded-lg bg-slate-200 dark:bg-surface-dark border border-transparent dark:border-white/5 pl-4 pr-4 transition-all hover:bg-slate-300 dark:hover:bg-white/5">
+<p class="text-slate-600 dark:text-slate-300 text-sm font-medium leading-normal">Abstract</p>
+</button>
+</div>
+<!-- Main Content: Hero Option A (Carousel style layout) -->
+<div class="px-4 pb-2">
+<div class="flex items-center justify-between mb-3">
+<h3 class="text-slate-900 dark:text-white text-md font-bold">Top Pick</h3>
+<span class="text-xs font-semibold text-primary uppercase tracking-wider bg-primary/10 px-2 py-1 rounded">Recommended</span>
+</div>
+<div class="relative flex flex-col gap-4 rounded-2xl bg-white dark:bg-surface-dark p-3 ring-2 ring-primary shadow-xl shadow-primary/10 transition-transform">
+<!-- Active Selection Indicator -->
+<div class="absolute top-5 right-5 z-10 bg-primary text-white rounded-full p-1 shadow-lg flex items-center justify-center">
+<span class="material-symbols-outlined text-[20px]">check</span>
+</div>
+<div class="w-full bg-center bg-no-repeat aspect-[4/3] bg-cover rounded-xl overflow-hidden relative group" data-alt="Modern geometric logo design on a dark business card mockup with blue accents" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBguTy4gVPM9B9cEXryySTz6qCAEEG0YvPv23r0cZNV_h1O2UgtM8wnF0FbobfHOEOkuArtGr0oTjFvOfTJqKuQ8bC1UoSJOMygcRoZjZNvtLNbiPQcnKu6HIvMaFWW9Ru0tMOsmkpyRadzlk14eK_7gx6NAhEsqg7Xc3j6jQjECteyLe__qrBLZ5GD31nSw6gjsC3RtcLH3W1_WIcPuV0CD5pJbO9gfXgriUij9LFJJnPMmd46pvGfe9e5sPz3Nek1wY3DuVmm_dc");'>
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-60"></div>
+</div>
+<div class="flex flex-col gap-1 px-1 pb-1">
+<p class="text-slate-900 dark:text-white text-lg font-bold leading-tight">Option A - Hero Concept</p>
+<p class="text-slate-500 dark:text-slate-400 text-sm font-medium">Geometric refinement with high contrast.</p>
+</div>
+</div>
+</div>
+<!-- Grid: Option B & C -->
+<div class="px-4 py-6">
+<h3 class="text-slate-900 dark:text-white text-md font-bold mb-4">Alternatives</h3>
+<div class="grid grid-cols-2 gap-4">
+<!-- Option B -->
+<div class="relative flex flex-col gap-3 rounded-2xl bg-white dark:bg-surface-dark p-3 border border-slate-200 dark:border-white/5 transition-all hover:border-primary/50 group cursor-pointer">
+<!-- Inactive Selection Indicator -->
+<div class="absolute top-4 right-4 z-10 size-6 rounded-full border-2 border-white/50 bg-black/20 backdrop-blur-sm group-hover:border-primary/70 transition-colors"></div>
+<div class="w-full bg-center bg-no-repeat aspect-square bg-cover rounded-xl" data-alt="Minimalist flat logo variation with clean lines on white paper" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuA9FQYDIIR50ehWk4LMCBnBJYfU1tUVuMaqVaa2UUBNNf4jiewWd7F-HVn13AuuPzTD9sewZNqSt6SXyPbty8ZkhtVGFw28Tlsfb2LTG1tg9DBoHpTEmj3dEmCIMtG2sO1rQ0JFfk1zGgt7kQeRVGQhpC5YQe39OKJT8LgEJ_c3cEAHgLUduYUJ5qlTamGcqBeIQ7CmXIQr7orpdH3P8vN6cvjwqRGihvJa25WWk0EE80LUHp_gtanxkN_aQwLZpS4vil8l79yN2CY");'></div>
+<div class="px-1">
+<p class="text-slate-900 dark:text-white text-base font-bold leading-normal">Option B</p>
+<p class="text-slate-500 dark:text-slate-400 text-xs font-normal leading-normal">Flat Logo Variation</p>
+</div>
+</div>
+<!-- Option C -->
+<div class="relative flex flex-col gap-3 rounded-2xl bg-white dark:bg-surface-dark p-3 border border-slate-200 dark:border-white/5 transition-all hover:border-primary/50 group cursor-pointer">
+<!-- Inactive Selection Indicator -->
+<div class="absolute top-4 right-4 z-10 size-6 rounded-full border-2 border-white/50 bg-black/20 backdrop-blur-sm group-hover:border-primary/70 transition-colors"></div>
+<div class="w-full bg-center bg-no-repeat aspect-square bg-cover rounded-xl" data-alt="Monochrome typographic logo design embossed on grey surface" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCgGyzKklHtMBvlA0o4vWg3rXLwzZ21ouRhkKHQvPW3lLfEk-Kpj7PFGXmDeDsmXfRCU8gUGHMHqIOUWErbeWibWtqOPxa81ociJjB0tknmVNidhTqyQCYdS2yH5YD6vX0gzf6Fkxe3FuK0SDPJL_L-aj3-Hf3L6r_j6RVgbNLL4hVpJrz8oW5DyBa5DTffu_vSlDiNzhz8vX9a71PRtPYDuKLGCTHdi3tYgCYtQvNnSfr3f7y-AKLEJY_6h4D0ClslkwrW2hC17Vw");'></div>
+<div class="px-1">
+<p class="text-slate-900 dark:text-white text-base font-bold leading-normal">Option C</p>
+<p class="text-slate-500 dark:text-slate-400 text-xs font-normal leading-normal">Monochrome Version</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Bottom Action Bar -->
+<div class="fixed bottom-0 left-0 w-full bg-background-light/95 dark:bg-background-dark/95 backdrop-blur-xl border-t border-slate-200 dark:border-slate-800 p-4 z-50 pb-8 safe-area-bottom">
+<div class="flex gap-3 max-w-md mx-auto">
+<button class="flex-1 flex items-center justify-center gap-2 h-12 rounded-xl border border-slate-300 dark:border-slate-600 text-slate-700 dark:text-slate-200 font-bold hover:bg-slate-100 dark:hover:bg-white/5 active:scale-[0.98] transition-all">
+<span class="material-symbols-outlined text-[20px]">refresh</span>
+                    Regenerate
+                </button>
+<button class="flex-[1.5] flex items-center justify-center gap-2 h-12 rounded-xl bg-primary text-white font-bold hover:bg-primary/90 active:scale-[0.98] transition-all shadow-lg shadow-primary/25">
+<span>Edit Selected</span>
+<span class="material-symbols-outlined text-[20px]">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+</body></html>

@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>History Item Detail</title>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#13b6ec",
+                        "background-light": "#f6f8f8",
+                        "background-dark": "#101d22",
+                    },
+                    fontFamily: {
+                        "display": ["Manrope", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings:
+            'FILL' 1,
+            'wght' 400,
+            'GRAD' 0,
+            'opsz' 24
+        }
+        /* Hide scrollbar for Chrome, Safari and Opera */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        /* Hide scrollbar for IE, Edge and Firefox */
+        .no-scrollbar {
+            -ms-overflow-style: none;  /* IE and Edge */
+            scrollbar-width: none;  /* Firefox */
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display text-neutral-900 dark:text-white antialiased overflow-hidden">
+<!-- Mobile Container Wrapper -->
+<div class="relative flex h-full min-h-screen w-full flex-col overflow-hidden max-w-md mx-auto shadow-2xl bg-background-light dark:bg-background-dark">
+<!-- TopAppBar -->
+<header class="flex items-center justify-between p-4 z-10 bg-background-light/90 dark:bg-background-dark/90 backdrop-blur-md sticky top-0 transition-colors duration-300">
+<button class="flex size-10 items-center justify-center rounded-full hover:bg-neutral-200 dark:hover:bg-neutral-800 transition-colors">
+<span class="material-symbols-outlined text-neutral-900 dark:text-white">arrow_back</span>
+</button>
+<h1 class="text-lg font-bold leading-tight tracking-tight text-neutral-900 dark:text-white">History Item Detail</h1>
+<button class="flex size-10 items-center justify-center rounded-full hover:bg-neutral-200 dark:hover:bg-neutral-800 transition-colors">
+<span class="material-symbols-outlined text-neutral-900 dark:text-white">more_horiz</span>
+</button>
+</header>
+<!-- Main Content (Scrollable) -->
+<main class="flex-1 overflow-y-auto no-scrollbar pb-32">
+<!-- Hero Image Section -->
+<div class="px-4 pt-2 pb-6">
+<div class="w-full aspect-[3/4] rounded-xl bg-cover bg-center shadow-lg relative overflow-hidden group border border-neutral-200 dark:border-neutral-800" data-alt="Red athletic sneaker floating on a clean minimal background" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAyBPW4hEXUZF6urvVXH5sRq9010CEpOgTCvlYR72_mxB5ETgInlg5UCMQ7wrFwWttQ8xuXW2zCAVKmhvDEA-bG0JXQM2oml86kUBuZNMSI3ZHgXWF8zj88XzYVhseJeQ0Nnp4ERlfd67BTd22bu0Q4ZtfIRdiiHX8LIeWy2hvhlADxm-PUzZM-6-h22xo-KBT34szh9wl3SSjC930zw1Vcam_KDskGcfEGAUA5dAwsXM1AfUHmI3nqhHjsC8fD22yBBwLG821J-Tk');">
+<!-- Overlay Gradient for better text readability if needed, kept subtle -->
+<div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+<!-- Zoom Indicator -->
+<button class="absolute bottom-3 right-3 bg-black/40 backdrop-blur-md p-2 rounded-lg text-white hover:bg-primary transition-colors border border-white/10">
+<span class="material-symbols-outlined text-[20px]">zoom_out_map</span>
+</button>
+</div>
+</div>
+<!-- Headline Text -->
+<div class="px-4">
+<h2 class="text-2xl font-bold tracking-tight text-neutral-900 dark:text-white leading-tight">Retro Runner V4</h2>
+<p class="text-sm text-neutral-500 dark:text-neutral-400 mt-1 font-medium">Design Draft #04</p>
+</div>
+<!-- Status ListItem -->
+<div class="px-4 mt-5">
+<div class="flex items-center justify-between py-3 px-4 rounded-lg bg-white dark:bg-[#1a2c32] border border-neutral-200 dark:border-neutral-800 shadow-sm">
+<div class="flex items-center gap-3">
+<div class="flex items-center justify-center text-primary bg-primary/10 rounded-full p-1">
+<span class="material-symbols-outlined text-[20px]">verified</span>
+</div>
+<span class="text-sm font-bold text-neutral-900 dark:text-white">Authenticity Verified</span>
+</div>
+<button class="text-neutral-400 hover:text-primary transition-colors flex items-center justify-center p-1 rounded-md hover:bg-neutral-100 dark:hover:bg-neutral-800">
+<span class="material-symbols-outlined text-[20px]">info</span>
+</button>
+</div>
+</div>
+<!-- DescriptionList (Metadata) -->
+<div class="px-4 mt-8">
+<h3 class="text-xs font-bold uppercase tracking-widest text-neutral-400 dark:text-neutral-500 mb-4 px-1">Scan Metadata</h3>
+<div class="grid grid-cols-[100px_1fr] gap-y-6 text-sm">
+<!-- Row 1 -->
+<div class="flex flex-col justify-center border-l-2 border-primary pl-4">
+<span class="font-medium text-neutral-500 dark:text-neutral-400">Date</span>
+</div>
+<div class="flex items-center border-b border-neutral-200 dark:border-neutral-800 pb-2">
+<span class="font-semibold text-neutral-900 dark:text-white">Oct 24, 2023 <span class="text-neutral-400 font-normal ml-1">14:30</span></span>
+</div>
+<!-- Row 2 -->
+<div class="flex flex-col justify-center border-l-2 border-primary pl-4">
+<span class="font-medium text-neutral-500 dark:text-neutral-400">Scan ID</span>
+</div>
+<div class="flex items-center justify-between border-b border-neutral-200 dark:border-neutral-800 pb-2 w-full group cursor-pointer">
+<span class="font-mono font-medium text-neutral-900 dark:text-white tracking-wide">#8X99-22B</span>
+<span class="material-symbols-outlined text-[16px] text-neutral-400 group-hover:text-primary transition-colors">content_copy</span>
+</div>
+<!-- Row 3 -->
+<div class="flex flex-col justify-center border-l-2 border-primary pl-4">
+<span class="font-medium text-neutral-500 dark:text-neutral-400">Project</span>
+</div>
+<div class="flex items-center border-b border-neutral-200 dark:border-neutral-800 pb-2">
+<span class="font-semibold text-neutral-900 dark:text-white">Nike Collab</span>
+</div>
+<!-- Row 4 -->
+<div class="flex flex-col justify-center border-l-2 border-primary pl-4">
+<span class="font-medium text-neutral-500 dark:text-neutral-400">Device</span>
+</div>
+<div class="flex items-center border-b border-neutral-200 dark:border-neutral-800 pb-2">
+<span class="font-semibold text-neutral-900 dark:text-white">LiDAR Pro Scanner</span>
+</div>
+</div>
+</div>
+<!-- Spacer for bottom bar -->
+<div class="h-6"></div>
+</main>
+<!-- Footer Actions (Sticky Bottom) -->
+<div class="absolute bottom-0 left-0 w-full bg-white/80 dark:bg-[#101d22]/80 backdrop-blur-xl border-t border-neutral-200 dark:border-neutral-800 p-4 pb-8 z-20">
+<div class="flex gap-3">
+<button class="flex-1 h-12 flex items-center justify-center gap-2 rounded-lg border border-neutral-300 dark:border-neutral-700 bg-transparent text-neutral-900 dark:text-white font-bold text-sm hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors active:scale-[0.98]">
+<span class="material-symbols-outlined text-[20px]">content_copy</span>
+                    Duplicate
+                </button>
+<button class="flex-[2] h-12 flex items-center justify-center gap-2 rounded-lg bg-primary text-white font-bold text-sm shadow-lg shadow-primary/25 hover:bg-primary/90 transition-colors active:scale-[0.98]">
+<span class="material-symbols-outlined text-[20px]">edit_square</span>
+                    Re-edit Design
+                </button>
+</div>
+</div>
+</div>
+</body></html>

@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Design Studio - Prompt &amp; Brand Input</title>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Theme Configuration -->
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#13b6ec",
+                        "background-light": "#f6f8f8",
+                        "background-dark": "#101d22",
+                        "surface-dark": "#1c2b31", 
+                        "surface-light": "#ffffff",
+                    },
+                    fontFamily: {
+                        "display": ["Manrope", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem", 
+                        "xl": "0.75rem",
+                        "2xl": "1rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        /* Custom scrollbar hiding for the carousel */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        
+        .material-symbols-outlined {
+            font-variation-settings:
+            'FILL' 0,
+            'wght' 400,
+            'GRAD' 0,
+            'opsz' 24
+        }
+        /* Active icon state */
+        .icon-filled {
+            font-variation-settings:
+            'FILL' 1,
+            'wght' 400,
+            'GRAD' 0,
+            'opsz' 24
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark text-[#111418] dark:text-white font-display overflow-x-hidden antialiased">
+<div class="relative flex h-full min-h-screen w-full flex-col max-w-md mx-auto shadow-2xl overflow-hidden bg-background-light dark:bg-background-dark group/design-root">
+<!-- Header -->
+<div class="flex items-center justify-between p-4 sticky top-0 z-10 bg-background-light/90 dark:bg-background-dark/90 backdrop-blur-md">
+<button class="text-[#111418] dark:text-white flex size-10 shrink-0 items-center justify-center rounded-full hover:bg-black/5 dark:hover:bg-white/10 transition-colors">
+<span class="material-symbols-outlined">arrow_back</span>
+</button>
+<h2 class="text-lg font-bold leading-tight tracking-[-0.015em]">Design Studio</h2>
+<button class="text-[#111418] dark:text-white flex size-10 shrink-0 items-center justify-center rounded-full hover:bg-black/5 dark:hover:bg-white/10 transition-colors">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</div>
+<!-- Main Content Area -->
+<div class="flex-1 overflow-y-auto pb-32 no-scrollbar">
+<!-- Section 1: The Vision -->
+<div class="px-4 pt-2">
+<div class="flex items-center gap-2 mb-3">
+<span class="material-symbols-outlined text-primary text-[20px]">auto_awesome</span>
+<h3 class="text-lg font-bold leading-tight">The Vision</h3>
+</div>
+<div class="relative group">
+<div class="absolute -inset-0.5 bg-gradient-to-r from-primary/50 to-purple-600/50 rounded-xl opacity-75 group-hover:opacity-100 transition duration-200 blur shadow-lg"></div>
+<div class="relative bg-surface-light dark:bg-surface-dark rounded-xl p-1">
+<textarea class="w-full bg-transparent border-none focus:ring-0 text-base p-4 min-h-[140px] resize-none placeholder-gray-400 dark:placeholder-gray-500 text-[#111418] dark:text-white font-medium leading-relaxed" placeholder="Describe what you want to create... e.g. A minimalist logo for a sustainable coffee shop featuring a leaf and a bean."></textarea>
+<!-- AI Helper Button inside textarea area -->
+<div class="flex justify-end px-3 pb-3">
+<button class="flex items-center gap-1.5 px-3 py-1.5 bg-primary/10 hover:bg-primary/20 text-primary text-xs font-bold rounded-full transition-colors">
+<span class="material-symbols-outlined text-[16px]">magic_button</span>
+                                Enhance Prompt
+                            </button>
+</div>
+</div>
+</div>
+</div>
+<!-- Spacer -->
+<div class="h-8"></div>
+<!-- Section 2: Brand Identity -->
+<div>
+<div class="px-4 pb-3 flex justify-between items-end">
+<h3 class="text-lg font-bold leading-tight">Brand Identity</h3>
+<span class="text-xs font-medium text-primary cursor-pointer hover:underline">View All</span>
+</div>
+<div class="flex overflow-x-auto no-scrollbar pl-4 pr-4 gap-4 pb-4">
+<!-- Card 1: Selected -->
+<div class="flex flex-col gap-2 shrink-0 w-36 cursor-pointer group">
+<div class="relative w-full aspect-square rounded-2xl overflow-hidden border-2 border-primary shadow-[0_0_15px_rgba(19,182,236,0.3)]">
+<div class="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-110" data-alt="Abstract colorful geometric pattern representing a brand logo" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAsCSaGdnYjibOu8hemv5vt7j3ht3C6IumvLMi0omcrSnemmXjNbQ07uCYgEIxpC75MPrAygyFzpNy2YVoZBJm3eUa399kJq5Pin6j3kJOeTkQtzm9NqnCyGqZjbaqWhJ-D07SBaOdbyzyWPu6xiA21UpBYb_dUS6f3oD8KhOWBqspmdwReI3MtvNARtSQApspzElz8PKdjseTfYBYrpLvEQQMN7cZhJOXOI4fJPTUEXEw9n-EViXWBATKc9iFCaWn0YP_reRHNJHc');">
+</div>
+<div class="absolute top-2 right-2 bg-primary text-white rounded-full p-1 shadow-sm">
+<span class="material-symbols-outlined text-[16px] block">check</span>
+</div>
+</div>
+<p class="text-center font-bold text-sm">Neon Flux</p>
+</div>
+<!-- Card 2 -->
+<div class="flex flex-col gap-2 shrink-0 w-36 cursor-pointer group">
+<div class="relative w-full aspect-square rounded-2xl overflow-hidden border-2 border-transparent hover:border-white/20 dark:hover:border-white/20 bg-surface-dark">
+<div class="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-110 opacity-80 group-hover:opacity-100" data-alt="Minimalist black and white typography design" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCVUxx3hqOhh21cTz03rcX1qKThpGA2Sk5tDLJZ2wtnzI5ZkMtnroWgivs1WZ4krRF5tK9FtfuY_Jd-OTFMCIm0LXdQmreGeVtGGwaRDTkoBo7-C1EvuOM7aUKN1tnJwoCfI0jOTSaEmidZ8HpjHEPq4_37ZwhucPcY7YKGhLhM7pyxLsWDQdv43BtPWgGVdIkeesPSAox9ijMdUH-J4mG3MsKHUPBimAZ5UPoaQHq5x3R_Xbtms67Khz66isqErnyGJ39fMVbpcU8');">
+</div>
+</div>
+<p class="text-center font-medium text-sm text-gray-500 dark:text-gray-400">Mono Type</p>
+</div>
+<!-- Card 3 -->
+<div class="flex flex-col gap-2 shrink-0 w-36 cursor-pointer group">
+<div class="relative w-full aspect-square rounded-2xl overflow-hidden border-2 border-transparent hover:border-white/20 dark:hover:border-white/20 bg-surface-dark">
+<div class="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-110 opacity-80 group-hover:opacity-100" data-alt="Organic green leaf pattern texture" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCFTE7guB_tdb6KWoUNeG1_NWOvZS1jAjw272btmoeOJQD3XhgeUKrMAW3q2nX1OX9iZF8rhJdWnXqn489cNUHfK-a9N-rqoTXEEHYlaedJums8ozECkHirPnPlUnSQpyfY_JpX1X0G_WpUNqg9rNH3wDWD4wnphpwokITj2TggyWLDO-Z_Y-Jski-ReZuE7XXHk2uYHBAWOCmlchDFYfy9hKHWqxiZVNHRJVdqrwTBUN9z8dZHubp-NTwZ4_zgsq62qZ7ODn4GS5A');">
+</div>
+</div>
+<p class="text-center font-medium text-sm text-gray-500 dark:text-gray-400">Eco Pure</p>
+</div>
+<!-- Add New Card -->
+<div class="flex flex-col gap-2 shrink-0 w-36 cursor-pointer">
+<div class="w-full aspect-square rounded-2xl border-2 border-dashed border-gray-300 dark:border-gray-600 flex flex-col items-center justify-center hover:bg-gray-100 dark:hover:bg-white/5 transition-colors text-gray-400 hover:text-primary hover:border-primary">
+<span class="material-symbols-outlined text-4xl mb-1">add_circle</span>
+<span class="text-xs font-bold">New Kit</span>
+</div>
+<p class="text-center font-medium text-sm text-gray-500 dark:text-gray-400">Create</p>
+</div>
+</div>
+</div>
+<!-- Spacer -->
+<div class="h-6"></div>
+<!-- Section 3: Fine Tuning -->
+<div class="px-4">
+<div class="flex items-center gap-2 mb-4">
+<span class="material-symbols-outlined text-gray-400 text-[20px]">tune</span>
+<h3 class="text-lg font-bold leading-tight">Fine Tuning</h3>
+</div>
+<div class="bg-surface-light dark:bg-surface-dark rounded-2xl p-5 shadow-sm space-y-6">
+<!-- Color Control -->
+<div>
+<div class="flex justify-between mb-3">
+<label class="text-sm font-semibold text-gray-700 dark:text-gray-200">Primary Color</label>
+<span class="text-xs text-primary font-mono">#13B6EC</span>
+</div>
+<div class="flex gap-3 items-center">
+<!-- Selected Color -->
+<button class="w-10 h-10 rounded-full bg-primary ring-2 ring-offset-2 ring-primary ring-offset-surface-dark transition-all scale-110 shadow-lg relative flex items-center justify-center">
+<span class="material-symbols-outlined text-white text-[18px]">brush</span>
+</button>
+<!-- Options -->
+<button class="w-10 h-10 rounded-full bg-[#FF5A5F] hover:scale-105 transition-transform"></button>
+<button class="w-10 h-10 rounded-full bg-[#FFC857] hover:scale-105 transition-transform"></button>
+<button class="w-10 h-10 rounded-full bg-[#8A4FFF] hover:scale-105 transition-transform"></button>
+<!-- Color Picker Button -->
+<button class="w-10 h-10 rounded-full border border-gray-300 dark:border-gray-600 flex items-center justify-center text-gray-500 hover:bg-gray-100 dark:hover:bg-white/5 transition-colors ml-auto">
+<span class="material-symbols-outlined text-[20px]">colorize</span>
+</button>
+</div>
+</div>
+<!-- Divider -->
+<div class="h-px bg-gray-200 dark:bg-gray-700"></div>
+<!-- Font Control -->
+<div>
+<div class="flex justify-between mb-3">
+<label class="text-sm font-semibold text-gray-700 dark:text-gray-200">Typography</label>
+</div>
+<div class="grid grid-cols-3 gap-2">
+<button class="relative overflow-hidden rounded-lg bg-primary/20 border border-primary text-primary px-3 py-2.5 text-sm font-bold text-center transition-all">
+                                Sans
+                                <div class="absolute inset-0 bg-primary opacity-10"></div>
+</button>
+<button class="rounded-lg bg-gray-100 dark:bg-background-dark border border-transparent text-gray-600 dark:text-gray-400 px-3 py-2.5 text-sm font-serif text-center hover:bg-gray-200 dark:hover:bg-white/5 transition-all">
+                                Serif
+                            </button>
+<button class="rounded-lg bg-gray-100 dark:bg-background-dark border border-transparent text-gray-600 dark:text-gray-400 px-3 py-2.5 text-sm font-mono text-center hover:bg-gray-200 dark:hover:bg-white/5 transition-all">
+                                Mono
+                            </button>
+</div>
+</div>
+</div>
+</div>
+<!-- Extra space for footer -->
+<div class="h-10"></div>
+</div>
+<!-- Footer / FAB -->
+<div class="absolute bottom-0 left-0 w-full p-4 bg-gradient-to-t from-background-light via-background-light to-transparent dark:from-background-dark dark:via-background-dark dark:to-transparent z-20 pointer-events-none pb-8">
+<button class="pointer-events-auto w-full bg-primary hover:bg-[#11a2d3] text-white h-14 rounded-xl font-bold text-lg shadow-[0_8px_20px_rgba(19,182,236,0.4)] transition-all active:scale-[0.98] flex items-center justify-center gap-2 group">
+<span class="material-symbols-outlined group-hover:animate-pulse">rocket_launch</span>
+                Generate Assets
+            </button>
+</div>
+</div>
+</body></html>

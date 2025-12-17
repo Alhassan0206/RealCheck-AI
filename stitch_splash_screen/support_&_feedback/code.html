@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Support &amp; Feedback</title>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#13b6ec",
+                        "background-light": "#f6f8f8",
+                        "background-dark": "#101d22",
+                        "surface-dark": "#1c2e36",
+                        "surface-light": "#ffffff",
+                    },
+                    fontFamily: {
+                        "display": ["Manrope", "sans-serif"]
+                    },
+                    borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "2xl": "1rem", "full": "9999px" },
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        /* Hide scrollbar for clean mobile look */
+        .no-scrollbar::-webkit-scrollbar {
+          display: none;
+        }
+        .no-scrollbar {
+          -ms-overflow-style: none;
+          scrollbar-width: none;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-black text-slate-900 dark:text-white font-display antialiased h-screen w-full flex justify-center overflow-hidden">
+<!-- Mobile Container -->
+<div class="relative flex h-full w-full max-w-md flex-col overflow-hidden bg-background-light dark:bg-background-dark shadow-2xl">
+<!-- TopAppBar -->
+<div class="flex items-center px-4 py-3 justify-between shrink-0 z-10 bg-background-light dark:bg-background-dark sticky top-0">
+<button class="flex size-10 items-center justify-center rounded-full hover:bg-black/5 dark:hover:bg-white/10 transition-colors">
+<span class="material-symbols-outlined text-slate-900 dark:text-white" style="font-size: 24px;">arrow_back</span>
+</button>
+<h2 class="text-lg font-bold leading-tight flex-1 text-center pr-10 tracking-tight">Support &amp; Feedback</h2>
+</div>
+<!-- Scrollable Main Content -->
+<div class="flex-1 overflow-y-auto no-scrollbar pb-28">
+<!-- HeadlineText -->
+<div class="px-4 pt-2 pb-2">
+<h2 class="text-[28px] font-extrabold leading-tight tracking-tight text-slate-900 dark:text-white">How can we help you today?</h2>
+</div>
+<!-- SearchBar -->
+<div class="px-4 py-4">
+<label class="relative flex items-center w-full h-12 rounded-xl focus-within:ring-2 focus-within:ring-primary/50 bg-white dark:bg-surface-dark shadow-sm transition-all">
+<div class="grid place-items-center h-full w-12 text-primary">
+<span class="material-symbols-outlined">search</span>
+</div>
+<input class="peer h-full w-full outline-none text-base text-slate-700 dark:text-white pr-4 bg-transparent placeholder-slate-400 font-medium border-none focus:ring-0" placeholder="Search for answers..." type="text"/>
+</label>
+</div>
+<!-- Chips -->
+<div class="flex gap-3 px-4 py-2 overflow-x-auto no-scrollbar items-center">
+<button class="flex h-9 shrink-0 items-center justify-center gap-x-2 rounded-lg bg-primary text-white px-4 transition-transform active:scale-95 shadow-lg shadow-primary/20">
+<p class="text-sm font-bold">Scanning</p>
+</button>
+<button class="flex h-9 shrink-0 items-center justify-center gap-x-2 rounded-lg bg-white dark:bg-surface-dark border border-slate-200 dark:border-transparent px-4 transition-transform active:scale-95 hover:bg-slate-50 dark:hover:bg-white/5">
+<p class="text-slate-600 dark:text-slate-300 text-sm font-semibold">Design Tools</p>
+</button>
+<button class="flex h-9 shrink-0 items-center justify-center gap-x-2 rounded-lg bg-white dark:bg-surface-dark border border-slate-200 dark:border-transparent px-4 transition-transform active:scale-95 hover:bg-slate-50 dark:hover:bg-white/5">
+<p class="text-slate-600 dark:text-slate-300 text-sm font-semibold">Account</p>
+</button>
+<button class="flex h-9 shrink-0 items-center justify-center gap-x-2 rounded-lg bg-white dark:bg-surface-dark border border-slate-200 dark:border-transparent px-4 transition-transform active:scale-95 hover:bg-slate-50 dark:hover:bg-white/5">
+<p class="text-slate-600 dark:text-slate-300 text-sm font-semibold">Billing</p>
+</button>
+</div>
+<!-- Quick Action Grid -->
+<div class="px-4 py-8">
+<div class="grid grid-cols-2 gap-3">
+<!-- Chat Card -->
+<div class="col-span-1 bg-white dark:bg-surface-dark rounded-2xl p-4 flex flex-col gap-4 shadow-sm border border-slate-100 dark:border-transparent cursor-pointer active:scale-[0.98] transition-all relative overflow-hidden group">
+<!-- Decorative bg icon -->
+<div class="absolute -bottom-4 -right-4 opacity-[0.03] dark:opacity-[0.05] pointer-events-none transform rotate-12 group-hover:scale-110 transition-transform duration-300">
+<span class="material-symbols-outlined text-8xl text-primary">chat_bubble</span>
+</div>
+<div class="size-12 rounded-xl bg-primary/10 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">chat_bubble</span>
+</div>
+<div>
+<p class="font-bold text-lg dark:text-white leading-tight">Chat</p>
+<p class="text-xs text-slate-500 dark:text-slate-400 mt-1 font-medium">Wait time: &lt; 2 min</p>
+</div>
+</div>
+<!-- Email Card -->
+<div class="col-span-1 bg-white dark:bg-surface-dark rounded-2xl p-4 flex flex-col gap-4 shadow-sm border border-slate-100 dark:border-transparent cursor-pointer active:scale-[0.98] transition-all relative overflow-hidden group">
+<div class="absolute -bottom-4 -right-4 opacity-[0.03] dark:opacity-[0.05] pointer-events-none transform rotate-12 group-hover:scale-110 transition-transform duration-300">
+<span class="material-symbols-outlined text-8xl text-purple-500">mail</span>
+</div>
+<div class="size-12 rounded-xl bg-purple-500/10 flex items-center justify-center text-purple-500">
+<span class="material-symbols-outlined">mail</span>
+</div>
+<div>
+<p class="font-bold text-lg dark:text-white leading-tight">Email</p>
+<p class="text-xs text-slate-500 dark:text-slate-400 mt-1 font-medium">Get a reply in 24h</p>
+</div>
+</div>
+<!-- Report Issue Card (Full Width) -->
+<div class="col-span-2 mt-1 bg-white dark:bg-surface-dark rounded-2xl p-4 flex items-center justify-between shadow-sm border border-slate-100 dark:border-transparent cursor-pointer active:scale-[0.99] transition-all group hover:bg-slate-50 dark:hover:bg-[#233640]">
+<div class="flex items-center gap-4">
+<div class="size-12 rounded-xl bg-orange-500/10 flex items-center justify-center text-orange-500 shrink-0">
+<span class="material-symbols-outlined">bug_report</span>
+</div>
+<div class="flex flex-col">
+<p class="font-bold text-base dark:text-white">Report an issue</p>
+<p class="text-xs text-slate-500 dark:text-slate-400 font-medium">Flag false positives or bugs</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-slate-300 dark:text-slate-500 group-hover:text-primary transition-colors">arrow_forward_ios</span>
+</div>
+</div>
+</div>
+<!-- FAQ Section -->
+<div class="px-4 pb-4">
+<div class="flex items-center justify-between pb-4">
+<h3 class="text-lg font-bold leading-tight tracking-[-0.015em] text-slate-900 dark:text-white">Common Questions</h3>
+<button class="text-primary text-sm font-bold hover:opacity-80 transition-opacity">View all</button>
+</div>
+<div class="flex flex-col gap-3">
+<!-- FAQ Item 1 -->
+<div class="group flex flex-col bg-white dark:bg-surface-dark rounded-xl overflow-hidden border border-slate-100 dark:border-transparent cursor-pointer transition-colors hover:border-primary/30">
+<div class="flex items-center justify-between p-4 w-full text-left">
+<span class="text-sm font-bold text-slate-700 dark:text-slate-200">How do I scan a product correctly?</span>
+<span class="material-symbols-outlined text-slate-400 group-hover:text-primary transition-colors">add</span>
+</div>
+</div>
+<!-- FAQ Item 2 -->
+<div class="group flex flex-col bg-white dark:bg-surface-dark rounded-xl overflow-hidden border border-slate-100 dark:border-transparent cursor-pointer transition-colors hover:border-primary/30">
+<div class="flex items-center justify-between p-4 w-full text-left">
+<span class="text-sm font-bold text-slate-700 dark:text-slate-200">Is my design data secure?</span>
+<span class="material-symbols-outlined text-slate-400 group-hover:text-primary transition-colors">add</span>
+</div>
+</div>
+<!-- FAQ Item 3 -->
+<div class="group flex flex-col bg-white dark:bg-surface-dark rounded-xl overflow-hidden border border-slate-100 dark:border-transparent cursor-pointer transition-colors hover:border-primary/30">
+<div class="flex items-center justify-between p-4 w-full text-left">
+<span class="text-sm font-bold text-slate-700 dark:text-slate-200">How to export brand assets?</span>
+<span class="material-symbols-outlined text-slate-400 group-hover:text-primary transition-colors">add</span>
+</div>
+</div>
+<!-- FAQ Item 4 -->
+<div class="group flex flex-col bg-white dark:bg-surface-dark rounded-xl overflow-hidden border border-slate-100 dark:border-transparent cursor-pointer transition-colors hover:border-primary/30">
+<div class="flex items-center justify-between p-4 w-full text-left">
+<span class="text-sm font-bold text-slate-700 dark:text-slate-200">What happens with scan errors?</span>
+<span class="material-symbols-outlined text-slate-400 group-hover:text-primary transition-colors">add</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Version Info -->
+<div class="flex flex-col items-center justify-center py-8 gap-1 opacity-50">
+<p class="text-[10px] text-slate-500 dark:text-slate-400 font-bold uppercase tracking-widest">Design Studio App</p>
+<p class="text-xs text-slate-400 dark:text-slate-600 font-medium font-mono">v2.4.1 (Build 309)</p>
+</div>
+</div>
+<!-- Sticky Footer CTA -->
+<div class="absolute bottom-0 left-0 w-full p-5 bg-gradient-to-t from-background-light via-background-light to-transparent dark:from-background-dark dark:via-background-dark dark:to-transparent z-20">
+<button class="w-full bg-primary hover:bg-primary/90 text-white font-bold py-4 rounded-xl shadow-[0_8px_20px_-6px_rgba(19,182,236,0.4)] flex items-center justify-center gap-2 transition-all active:scale-[0.98]">
+<span class="material-symbols-outlined">forum</span>
+                Start Live Chat
+            </button>
+</div>
+</div>
+</body></html>

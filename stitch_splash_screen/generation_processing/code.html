@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Generation Processing</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#13b6ec",
+                        "background-light": "#f6f8f8",
+                        "background-dark": "#101d22",
+                    },
+                    fontFamily: {
+                        "display": ["Manrope", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.375rem", // rounded-md roughly
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings:
+            'FILL' 1,
+            'wght' 400,
+            'GRAD' 0,
+            'opsz' 24
+        }
+        /* Custom pulsing animation for the placeholder */
+        @keyframes pulse-glow {
+            0%, 100% { opacity: 0.6; box-shadow: 0 0 10px rgba(19, 182, 236, 0.2); }
+            50% { opacity: 1; box-shadow: 0 0 25px rgba(19, 182, 236, 0.5); }
+        }
+        .animate-pulse-glow {
+            animation: pulse-glow 3s infinite ease-in-out;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display min-h-screen flex flex-col items-center justify-center">
+<!-- Mobile Container -->
+<div class="w-full max-w-md h-full min-h-screen bg-background-light dark:bg-background-dark flex flex-col relative overflow-hidden shadow-2xl">
+<!-- Top Navigation -->
+<header class="flex items-center justify-between px-4 py-4 pt-8 sticky top-0 z-10 bg-background-light/90 dark:bg-background-dark/90 backdrop-blur-sm">
+<div class="w-12"></div> <!-- Spacer for centering -->
+<h2 class="text-gray-900 dark:text-white text-lg font-bold leading-tight tracking-[-0.015em]">Processing</h2>
+<button class="w-12 flex items-center justify-end text-sm font-bold text-gray-500 hover:text-red-500 dark:text-[#92bbc9] dark:hover:text-red-400 transition-colors">
+                Cancel
+            </button>
+</header>
+<!-- Main Content Area -->
+<main class="flex-1 flex flex-col px-6 py-4 gap-8">
+<!-- Headline Status -->
+<div class="text-center space-y-2 mt-4">
+<h1 class="text-3xl font-bold text-gray-900 dark:text-white tracking-tight">Generating Design...</h1>
+<p class="text-gray-500 dark:text-[#92bbc9] text-sm font-medium animate-pulse">Refining details &amp; textures</p>
+</div>
+<!-- Central Visualization -->
+<div class="relative w-full aspect-square rounded-xl overflow-hidden shadow-lg border border-gray-200 dark:border-gray-800 bg-gray-100 dark:bg-[#1a2c33] group">
+<!-- Placeholder Image with Pulse Effect -->
+<div class="absolute inset-0 bg-cover bg-center opacity-80 animate-pulse-glow transition-all duration-500" data-alt="Abstract blue futuristic digital wave pattern" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuA48-xt6QX3R0G7qKWVE_mJckMlxdmjR6BnCDqioSmZv8ShiWfr-D-Xlgnq6Jb3WyXOyoUR6uhAi38j92hxeCGrnPeg_0Z84VU2HLvf-jl0dQB9ukKqLB19KdDv2MI2-_AJu8As_kv4EpcnQ4xCaW0PN3eFetggPhWkMQXmQuwfph6soUudT7OjQ8Lf33_wzOEmg7Y4C3qW5Ec6ZHDBzhYku5YotISU--bmNlcNKX2P5QOrnw_jBOZk4Pp4DT3HW9k9BTvkjwtM3D8");'></div>
+<!-- Overlay Gradient -->
+<div class="absolute inset-0 bg-gradient-to-t from-background-light/80 to-transparent dark:from-background-dark/80 dark:to-transparent"></div>
+<!-- Center Spinner/Icon -->
+<div class="absolute inset-0 flex items-center justify-center">
+<div class="bg-background-light/20 dark:bg-black/30 backdrop-blur-md rounded-full p-6 border border-white/10 shadow-xl">
+<span class="material-symbols-outlined text-primary text-5xl animate-spin" style="font-size: 48px;">
+                            autorenew
+                        </span>
+</div>
+</div>
+</div>
+<!-- Progress Bar Section -->
+<div class="flex flex-col gap-3">
+<div class="flex justify-between items-end">
+<span class="text-gray-700 dark:text-white text-sm font-bold">Rendering</span>
+<span class="text-primary text-xs font-bold tracking-wider uppercase">Step 2 of 3</span>
+</div>
+<!-- Track -->
+<div class="h-2 w-full bg-gray-200 dark:bg-[#325a67] rounded-full overflow-hidden">
+<!-- Indicator -->
+<div class="h-full bg-primary rounded-full transition-all duration-1000 ease-linear shadow-[0_0_10px_rgba(19,182,236,0.6)]" style="width: 65%;"></div>
+</div>
+</div>
+<!-- Status Chips -->
+<div class="flex flex-wrap gap-3 justify-center">
+<!-- Provider Chip -->
+<div class="flex items-center gap-2 px-3 py-2 rounded-lg bg-gray-200 dark:bg-[#233f48] border border-gray-300 dark:border-gray-700">
+<span class="material-symbols-outlined text-gray-700 dark:text-gray-300" style="font-size: 18px;">
+                        psychology
+                    </span>
+<span class="text-gray-900 dark:text-white text-xs font-medium">Replicate / SDXL</span>
+</div>
+<!-- Credits Chip -->
+<div class="flex items-center gap-2 px-3 py-2 rounded-lg bg-primary/10 border border-primary/20">
+<span class="material-symbols-outlined text-primary" style="font-size: 18px;">
+                        bolt
+                    </span>
+<span class="text-primary text-xs font-bold">Cost: 5 Credits</span>
+</div>
+</div>
+</main>
+<!-- Footer / Tips -->
+<footer class="p-6 pb-8 bg-background-light dark:bg-background-dark">
+<div class="bg-gray-100 dark:bg-[#1a2c33] rounded-xl p-4 flex gap-3 items-start border border-gray-200 dark:border-gray-800">
+<span class="material-symbols-outlined text-primary shrink-0 mt-0.5" style="font-size: 20px;">
+                    lightbulb
+                </span>
+<div class="flex flex-col gap-1">
+<p class="text-xs font-bold text-gray-500 dark:text-gray-400 uppercase tracking-wide">Did you know?</p>
+<p class="text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
+                        Consistent branding across all channels increases revenue by up to 23%.
+                    </p>
+</div>
+</div>
+</footer>
+</div>
+</body></html>

@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Full Screen Editor</title>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Theme Config -->
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#13b6ec",
+                        "background-light": "#f6f8f8",
+                        "background-dark": "#101d22",
+                        "surface-dark": "#16262d",
+                        "surface-light": "#ffffff"
+                    },
+                    fontFamily: {
+                        "display": ["Manrope", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        /* Custom scrollbar hiding for cleaner UI */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="font-display bg-background-light dark:bg-background-dark text-slate-900 dark:text-white antialiased overflow-hidden h-screen w-full flex flex-col relative selection:bg-primary/30">
+<!-- Top Bar (HUD) -->
+<header class="absolute top-0 left-0 w-full z-50 pt-safe-top">
+<!-- Safe area spacer for iOS status bar simulation -->
+<div class="h-12 w-full"></div>
+<div class="flex justify-between items-center px-4 pb-2">
+<!-- Back Button -->
+<button class="flex items-center justify-center w-10 h-10 rounded-full bg-background-light/10 dark:bg-black/20 backdrop-blur-md text-slate-700 dark:text-white hover:bg-background-light/20 transition-colors">
+<span class="material-symbols-outlined">arrow_back</span>
+</button>
+<!-- History Controls -->
+<div class="flex gap-4">
+<button class="p-2 text-slate-700 dark:text-white hover:text-primary transition-colors disabled:opacity-50">
+<span class="material-symbols-outlined">undo</span>
+</button>
+<button class="p-2 text-slate-700 dark:text-white hover:text-primary transition-colors disabled:opacity-50">
+<span class="material-symbols-outlined">redo</span>
+</button>
+</div>
+<!-- Export Button -->
+<button class="flex items-center justify-center h-10 px-5 rounded-full bg-primary text-background-dark gap-2 text-sm font-bold shadow-lg shadow-primary/20 hover:brightness-110 transition-all">
+<span class="material-symbols-outlined text-[20px] font-bold">ios_share</span>
+<span>Export</span>
+</button>
+</div>
+</header>
+<!-- Floating Loading State (Simulated) -->
+<!-- Positioned absolutely to not disrupt layout but show functionality -->
+<div class="absolute top-24 left-1/2 -translate-x-1/2 z-40 w-64 pointer-events-none opacity-0 animate-[fadeIn_0.5s_ease-in-out_2s_forwards]">
+<div class="bg-surface-dark/90 backdrop-blur rounded-xl p-3 shadow-2xl border border-white/5">
+<div class="flex justify-between items-center mb-2">
+<span class="text-xs font-bold text-primary">Removing Background...</span>
+<span class="text-[10px] text-slate-400">45%</span>
+</div>
+<div class="h-1.5 w-full bg-slate-700 rounded-full overflow-hidden">
+<div class="h-full bg-primary w-[45%] rounded-full"></div>
+</div>
+</div>
+</div>
+<!-- Canvas Area -->
+<main class="flex-grow relative flex items-center justify-center bg-background-light dark:bg-background-dark overflow-hidden w-full h-full z-0 touch-none">
+<!-- Checkerboard pattern for transparency indication behind canvas -->
+<div class="absolute inset-0 opacity-[0.03] dark:opacity-[0.05]" style="background-image: radial-gradient(#888 1px, transparent 1px); background-size: 20px 20px;">
+</div>
+<!-- The Image Canvas -->
+<div class="relative shadow-2xl transition-transform duration-200 ease-out w-[85%] aspect-[3/4]">
+<!-- Main Image -->
+<div class="w-full h-full bg-slate-200 dark:bg-slate-800 rounded-lg overflow-hidden relative">
+<img alt="Fashion model posing in a streetwear outfit with colorful background" class="w-full h-full object-cover" data-alt="Fashion model posing in a streetwear outfit with colorful background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAtkKWWCdItoKRcpFtAVccwyTqpHXs2mXTKJ3OZ6ObEl_ThsvdSHOPvR_CFssPf7f06YFgjeGE8CdK7jLnDlK8YzKfzknq1WtHUFEPL0UX7X2hBqDVAaEVyc9QuqRG9zIqhfNkfTN_u67Hmv6tqGVs6HaJ6LZMEtFhR4ee9EyvgzjIBVIDd4iWs1QJrJy-QBgDZFJ_00SOm-FtGZYMq44N4isRqq4X_Hp0WoHbifP8Hys7Q91pCvyqwmQD6x6RgiET7lk8Za1flIrw"/>
+<!-- Dark overlay for mood (optional based on edit) -->
+<div class="absolute inset-0 bg-black/10 pointer-events-none"></div>
+</div>
+<!-- Active Text Element with Selection Handles -->
+<div class="absolute top-1/4 left-1/2 -translate-x-1/2 cursor-move group">
+<!-- Selection Border Box -->
+<div class="absolute -inset-4 border-2 border-primary rounded-lg pointer-events-none opacity-100 flex items-center justify-center">
+<!-- Rotation Handle -->
+<div class="absolute -top-8 left-1/2 -translate-x-1/2 w-6 h-6 bg-white rounded-full shadow-md flex items-center justify-center cursor-pointer">
+<span class="material-symbols-outlined text-black text-[16px] rotate-45">sync</span>
+</div>
+<!-- Corner Handles -->
+<div class="absolute -top-1.5 -left-1.5 w-3 h-3 bg-primary rounded-full border border-white"></div>
+<div class="absolute -top-1.5 -right-1.5 w-3 h-3 bg-primary rounded-full border border-white"></div>
+<div class="absolute -bottom-1.5 -left-1.5 w-3 h-3 bg-primary rounded-full border border-white"></div>
+<div class="absolute -bottom-1.5 -right-1.5 w-3 h-3 bg-primary rounded-full border border-white"></div>
+</div>
+<!-- Text Content -->
+<h1 class="text-4xl font-extrabold text-white uppercase tracking-wider drop-shadow-lg text-center" style="font-family: 'Manrope', sans-serif;">
+                    Urban<br/>Style
+                </h1>
+</div>
+</div>
+</main>
+<!-- Bottom Controls Container -->
+<div class="absolute bottom-0 w-full z-50 flex flex-col bg-gradient-to-t from-background-dark via-background-dark/95 to-transparent pt-10 pb-6">
+<!-- Contextual Sub-Toolbar (Active: Text Edit) -->
+<div class="@container px-4 mb-4">
+<div class="bg-surface-light dark:bg-surface-dark border border-slate-200 dark:border-white/5 backdrop-blur-xl rounded-2xl p-4 shadow-xl flex flex-col gap-4">
+<!-- Row 1: Segmented Control (Alignment) -->
+<div class="flex items-center justify-between gap-4">
+<div class="flex bg-slate-100 dark:bg-black/40 rounded-lg p-1 w-full max-w-xs mx-auto">
+<label class="flex-1 cursor-pointer">
+<input class="peer sr-only" name="align" type="radio"/>
+<div class="flex items-center justify-center py-1.5 rounded-md text-slate-500 dark:text-slate-400 peer-checked:bg-white dark:peer-checked:bg-surface-dark peer-checked:text-primary peer-checked:shadow-sm transition-all">
+<span class="material-symbols-outlined text-[20px]">format_align_left</span>
+</div>
+</label>
+<label class="flex-1 cursor-pointer">
+<input checked="" class="peer sr-only" name="align" type="radio"/>
+<div class="flex items-center justify-center py-1.5 rounded-md text-slate-500 dark:text-slate-400 peer-checked:bg-white dark:peer-checked:bg-surface-dark peer-checked:text-primary peer-checked:shadow-sm transition-all">
+<span class="material-symbols-outlined text-[20px]">format_align_center</span>
+</div>
+</label>
+<label class="flex-1 cursor-pointer">
+<input class="peer sr-only" name="align" type="radio"/>
+<div class="flex items-center justify-center py-1.5 rounded-md text-slate-500 dark:text-slate-400 peer-checked:bg-white dark:peer-checked:bg-surface-dark peer-checked:text-primary peer-checked:shadow-sm transition-all">
+<span class="material-symbols-outlined text-[20px]">format_align_right</span>
+</div>
+</label>
+</div>
+<!-- Color Picker Circle -->
+<button class="w-9 h-9 rounded-full bg-white border-2 border-slate-200 dark:border-white/20 flex items-center justify-center shrink-0">
+<div class="w-7 h-7 rounded-full bg-gradient-to-br from-purple-500 to-pink-500"></div>
+</button>
+</div>
+<!-- Row 2: Slider (Font Size) -->
+<div class="flex items-center gap-4">
+<span class="text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider w-16">Size</span>
+<div class="relative flex-1 h-8 flex items-center group">
+<!-- Track -->
+<div class="absolute w-full h-1 bg-slate-200 dark:bg-slate-700 rounded-full overflow-hidden">
+<div class="h-full bg-primary w-[65%]"></div>
+</div>
+<!-- Thumb -->
+<div class="absolute left-[65%] w-5 h-5 bg-white rounded-full shadow-md border-2 border-primary cursor-pointer hover:scale-110 transition-transform"></div>
+</div>
+<span class="text-sm font-bold text-slate-900 dark:text-white w-8 text-right">42</span>
+</div>
+</div>
+</div>
+<!-- Primary Toolbar -->
+<div class="w-full overflow-x-auto no-scrollbar px-4">
+<div class="flex items-center justify-between min-w-max gap-6 mx-auto max-w-md">
+<!-- Tool: Text (Active) -->
+<button class="flex flex-col items-center gap-1 group">
+<div class="w-12 h-12 rounded-full bg-primary flex items-center justify-center text-background-dark shadow-[0_0_15px_rgba(19,182,236,0.3)] transition-all">
+<span class="material-symbols-outlined">title</span>
+</div>
+<span class="text-[10px] font-bold text-primary tracking-wide">Text</span>
+</button>
+<!-- Tool: Remove BG -->
+<button class="flex flex-col items-center gap-1 group opacity-70 hover:opacity-100 transition-opacity">
+<div class="w-12 h-12 rounded-full bg-transparent border border-slate-300 dark:border-slate-600 flex items-center justify-center text-slate-700 dark:text-white group-hover:bg-white/5 transition-all">
+<span class="material-symbols-outlined">ink_eraser</span>
+</div>
+<span class="text-[10px] font-medium text-slate-500 dark:text-slate-400">Remove BG</span>
+</button>
+<!-- Tool: Stickers -->
+<button class="flex flex-col items-center gap-1 group opacity-70 hover:opacity-100 transition-opacity">
+<div class="w-12 h-12 rounded-full bg-transparent border border-slate-300 dark:border-slate-600 flex items-center justify-center text-slate-700 dark:text-white group-hover:bg-white/5 transition-all">
+<span class="material-symbols-outlined">emoji_emotions</span>
+</div>
+<span class="text-[10px] font-medium text-slate-500 dark:text-slate-400">Sticker</span>
+</button>
+<!-- Tool: Layers -->
+<button class="flex flex-col items-center gap-1 group opacity-70 hover:opacity-100 transition-opacity relative">
+<div class="w-12 h-12 rounded-full bg-transparent border border-slate-300 dark:border-slate-600 flex items-center justify-center text-slate-700 dark:text-white group-hover:bg-white/5 transition-all">
+<span class="material-symbols-outlined">layers</span>
+</div>
+<span class="text-[10px] font-medium text-slate-500 dark:text-slate-400">Layers</span>
+<!-- Badge -->
+<span class="absolute top-0 right-1 w-4 h-4 bg-red-500 text-white text-[9px] font-bold flex items-center justify-center rounded-full border border-background-dark">2</span>
+</button>
+<!-- Tool: Adjust -->
+<button class="flex flex-col items-center gap-1 group opacity-70 hover:opacity-100 transition-opacity">
+<div class="w-12 h-12 rounded-full bg-transparent border border-slate-300 dark:border-slate-600 flex items-center justify-center text-slate-700 dark:text-white group-hover:bg-white/5 transition-all">
+<span class="material-symbols-outlined">tune</span>
+</div>
+<span class="text-[10px] font-medium text-slate-500 dark:text-slate-400">Adjust</span>
+</button>
+</div>
+</div>
+<!-- Home Indicator Safe Area Spacer -->
+<div class="h-6 w-full"></div>
+</div>
+<!-- Quick Notification/Progress Logic (Hidden by default, can be toggled via logic in real app) -->
+<!-- Used to demonstrate use of ProgressBar in a contextual way as requested by component list usage -->
+<style>
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translate(-50%, -10px); }
+            to { opacity: 1; transform: translate(-50%, 0); }
+        }
+    </style>
+</body></html>

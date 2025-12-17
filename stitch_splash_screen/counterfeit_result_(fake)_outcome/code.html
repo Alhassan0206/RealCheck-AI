@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Counterfeit Result Outcome</title>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Config -->
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+            extend: {
+                colors: {
+                "primary": "#ec1313",
+                "background-light": "#f8f6f6",
+                "background-dark": "#221010",
+                },
+                fontFamily: {
+                "display": ["Manrope", "sans-serif"]
+                },
+                borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+            },
+            },
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-white antialiased min-h-screen flex flex-col overflow-x-hidden selection:bg-primary selection:text-white">
+<!-- Top App Bar -->
+<header class="sticky top-0 z-20 bg-background-light/90 dark:bg-background-dark/90 backdrop-blur-md px-4 pt-4 pb-2 flex items-center justify-between border-b border-primary/10">
+<button class="flex items-center justify-center p-2 -ml-2 rounded-full hover:bg-black/5 dark:hover:bg-white/10 transition-colors group">
+<span class="material-symbols-outlined group-hover:-translate-x-0.5 transition-transform" style="font-size: 24px;">arrow_back</span>
+</button>
+<h2 class="text-lg font-bold leading-tight tracking-tight">Scan Result</h2>
+<div class="w-10"></div> <!-- Spacer for visual balance -->
+</header>
+<main class="flex-1 flex flex-col p-4 gap-6 w-full max-w-md mx-auto">
+<!-- Hero Section: FAKE Status -->
+<div class="flex flex-col items-center justify-center pt-4 pb-2 animate-[fadeIn_0.5s_ease-out]">
+<div class="relative mb-6">
+<!-- Glowing effect behind icon -->
+<div class="absolute inset-0 bg-primary rounded-full blur-2xl opacity-20"></div>
+<div class="relative size-24 rounded-full bg-[#331919] border border-primary/30 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary" style="font-size: 48px;">gpp_bad</span>
+</div>
+<!-- Absolute positioned badge -->
+<div class="absolute -bottom-3 left-1/2 -translate-x-1/2 whitespace-nowrap bg-primary text-white text-xs font-bold px-3 py-1 rounded-full shadow-lg shadow-red-900/50 flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">warning</span>
+                    FAILED
+                </div>
+</div>
+<h1 class="text-3xl font-bold text-center leading-tight mb-3">Verification Failed</h1>
+<!-- Big FAKE Badge -->
+<div class="border-2 border-primary border-dashed bg-primary/10 rounded-lg px-8 py-2 transform -rotate-2">
+<p class="text-primary text-2xl font-black tracking-widest uppercase">FAKE</p>
+</div>
+</div>
+<!-- Authenticity Score Card -->
+<div class="bg-[#331919] rounded-xl p-5 shadow-[0_4px_20px_-4px_rgba(0,0,0,0.5)] border border-primary/10 relative overflow-hidden">
+<!-- Background pattern/noise if needed -->
+<div class="absolute top-0 right-0 p-4 opacity-10">
+<span class="material-symbols-outlined text-6xl">speed</span>
+</div>
+<div class="relative z-10 flex flex-col gap-3">
+<div class="flex justify-between items-end">
+<p class="text-white/80 text-sm font-medium">Authenticity Score</p>
+<p class="text-primary text-2xl font-bold tabular-nums">12<span class="text-white/40 text-sm font-normal ml-1">/100</span></p>
+</div>
+<!-- Progress Bar -->
+<div class="rounded-full bg-[#221010] h-3 w-full overflow-hidden border border-white/5">
+<div class="h-full rounded-full bg-primary shadow-[0_0_10px_#ec1313]" style="width: 12%;"></div>
+</div>
+<p class="text-primary/80 text-xs font-medium flex items-center gap-1.5 mt-1">
+<span class="material-symbols-outlined text-sm">error</span>
+                    Critical score: Item likely counterfeit
+                </p>
+</div>
+</div>
+<!-- Product Details Card -->
+<div class="rounded-xl bg-[#331919] overflow-hidden border border-white/5">
+<div class="flex flex-row items-stretch">
+<!-- Image -->
+<div class="w-1/3 min-w-[120px] bg-[#221010] relative">
+<div class="absolute inset-0 bg-cover bg-center opacity-80" data-alt="Side profile of a black sneaker with white soles" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuA9cz6OCcg11Y7clOiDyyBhyshs56kSJ-XlaYcpWuda-FXE8aJKUxT3wC8wD2JIHOUvFdHgjSigHBXO8DKffqX7EJloOVPiIJ7-VtZm8nKHYELl2IFWsxy8BDidi4o-AE8rxFddToqVHh1_ir816C0yvp9dhQOcSsHsBVyu2Iti82m3H66lsjvrSQymOUjhMkRz72WiR2PvsliItzzwt_pji4N8qfEUtxH8pFTfi5j1thoI_TA1EdELJ0EW7wxhc2C66V3Zlxm8Lqg");'></div>
+<div class="absolute inset-0 bg-gradient-to-r from-transparent to-[#331919]"></div>
+</div>
+<!-- Content -->
+<div class="flex-1 p-4 flex flex-col justify-center gap-1">
+<div class="flex items-center gap-2 mb-1">
+<span class="bg-[#221010] text-white/50 text-[10px] uppercase font-bold px-2 py-0.5 rounded border border-white/5">Scanned Item</span>
+</div>
+<h3 class="text-white text-base font-bold leading-tight">Sneaker Model X - Ltd Edition</h3>
+<p class="text-primary text-xs font-mono mt-1">Batch ID: #99382-FAILED</p>
+</div>
+</div>
+</div>
+<!-- Analysis Breakdown (Collapsible style visual) -->
+<div class="flex flex-col gap-3">
+<h4 class="text-white/90 font-bold text-sm uppercase tracking-wider px-1">Detailed Analysis</h4>
+<div class="flex flex-col gap-2">
+<!-- Analysis Item 1: Fail -->
+<div class="bg-[#331919]/50 rounded-lg p-3 flex items-start gap-3 border border-primary/20">
+<div class="bg-primary/20 p-1 rounded-full shrink-0 mt-0.5">
+<span class="material-symbols-outlined text-primary text-sm font-bold block">close</span>
+</div>
+<div class="flex-1">
+<p class="text-white text-sm font-bold">RFID Signature Invalid</p>
+<p class="text-white/60 text-xs leading-relaxed">The embedded tag does not match manufacturer records.</p>
+</div>
+</div>
+<!-- Analysis Item 2: Fail -->
+<div class="bg-[#331919]/50 rounded-lg p-3 flex items-start gap-3 border border-primary/20">
+<div class="bg-primary/20 p-1 rounded-full shrink-0 mt-0.5">
+<span class="material-symbols-outlined text-primary text-sm font-bold block">close</span>
+</div>
+<div class="flex-1">
+<p class="text-white text-sm font-bold">Stitching Pattern Mismatch</p>
+<p class="text-white/60 text-xs leading-relaxed">Weave density is 40% lower than authentic samples.</p>
+</div>
+</div>
+<!-- Analysis Item 3: Pass (dimmed) -->
+<div class="bg-[#331919]/30 rounded-lg p-3 flex items-start gap-3 border border-white/5 opacity-60">
+<div class="bg-green-500/20 p-1 rounded-full shrink-0 mt-0.5">
+<span class="material-symbols-outlined text-green-500 text-sm font-bold block">check</span>
+</div>
+<div class="flex-1">
+<p class="text-white text-sm font-bold">Color Code Match</p>
+<p class="text-white/60 text-xs leading-relaxed">Color hex values are within tolerance.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="h-10"></div> <!-- Spacer before footer -->
+</main>
+<!-- Fixed Footer CTA -->
+<div class="sticky bottom-0 left-0 w-full p-4 bg-background-dark/95 backdrop-blur-lg border-t border-white/5 z-30">
+<div class="max-w-md mx-auto flex flex-col gap-3">
+<button class="w-full bg-primary hover:bg-red-600 text-white font-bold text-base py-4 px-6 rounded-xl shadow-lg shadow-primary/20 flex items-center justify-center gap-2 transition-transform active:scale-[0.98]">
+<span class="material-symbols-outlined">report_problem</span>
+                Report Counterfeit Item
+            </button>
+<button class="w-full text-white/50 text-sm font-medium py-2 hover:text-white transition-colors">
+                Contact Brand Support
+            </button>
+</div>
+</div>
+</body></html>

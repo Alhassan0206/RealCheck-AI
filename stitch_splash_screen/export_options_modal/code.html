@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Export Options Modal</title>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Theme Config -->
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#13b6ec",
+                        "background-light": "#f6f8f8",
+                        "background-dark": "#101d22",
+                        "surface-dark": "#16262c", // Slightly lighter than background-dark for cards
+                    },
+                    fontFamily: {
+                        "display": ["Manrope", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem", 
+                        "md": "0.375rem",
+                        "lg": "0.5rem", 
+                        "xl": "0.75rem", 
+                        "2xl": "1rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        /* Custom scrollbar hide for cleaner mobile look */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="font-display bg-gray-900 text-slate-900 dark:text-white h-screen w-full overflow-hidden relative">
+<!-- Background Context (Simulating the App behind the modal) -->
+<div class="absolute inset-0 z-0 w-full h-full pointer-events-none opacity-40 blur-[2px]" data-alt="Abstract dark graphic design pattern background" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDvzxz5NG45-hi6mhidVkGnJGsku3LzufJTm39oGYxBp4ShmCJV97vbNU0thiHakqUTCACNFIbSMDoDY8OJfNZHDesj6iwMPyvX7_BI_WfStngF6x0fxr5wYG2_Dq5U0l00pDwlCUjV47BvIsbome_9seIr3Z2EBdDAvk5bb8rAqmgZQrwP3HEvgIG5UTLFeb9-WedUStFWspM9VfkYw82Nqb8T9iPLLu4HTWXivNAPFTjBiZeNYV1bWOdQW9AkVlNJQ4gUT3aHJ28'); background-size: cover; background-position: center;">
+</div>
+<!-- Overlay Backdrop -->
+<div class="absolute inset-0 bg-black/60 z-10 backdrop-blur-sm"></div>
+<!-- Bottom Sheet Container -->
+<div class="absolute bottom-0 left-0 w-full z-20 flex flex-col justify-end h-auto max-h-[90vh]">
+<!-- Sheet Content -->
+<div class="bg-background-light dark:bg-background-dark w-full rounded-t-2xl shadow-2xl flex flex-col overflow-hidden pb-8">
+<!-- Handle -->
+<div class="w-full flex justify-center pt-3 pb-1">
+<div class="h-1.5 w-12 rounded-full bg-slate-300 dark:bg-slate-600/50"></div>
+</div>
+<!-- Header -->
+<div class="flex items-center justify-between px-6 py-3 border-b border-slate-200 dark:border-slate-800/50">
+<h2 class="text-xl font-bold tracking-tight text-slate-900 dark:text-white">Export Design</h2>
+<button class="p-2 -mr-2 text-slate-500 hover:text-slate-800 dark:text-slate-400 dark:hover:text-white transition-colors rounded-full hover:bg-slate-100 dark:hover:bg-slate-800">
+<span class="material-symbols-outlined text-2xl">close</span>
+</button>
+</div>
+<!-- Scrollable Content -->
+<div class="overflow-y-auto no-scrollbar">
+<!-- Preview Card -->
+<div class="p-6 pb-2">
+<div class="flex items-center justify-between gap-4 p-4 rounded-xl bg-white dark:bg-surface-dark border border-slate-200 dark:border-slate-700/50 shadow-sm">
+<div class="flex flex-col gap-1 min-w-0">
+<span class="inline-flex w-fit items-center rounded-md bg-green-500/10 px-2 py-1 text-xs font-medium text-green-500 ring-1 ring-inset ring-green-500/20 mb-1">Ready to export</span>
+<p class="text-slate-900 dark:text-white text-base font-bold truncate">Brand_Identity_V2_Final</p>
+<p class="text-slate-500 dark:text-slate-400 text-sm font-medium">Edited 2 mins ago</p>
+</div>
+<div class="w-20 h-20 bg-slate-200 dark:bg-slate-700 rounded-lg bg-cover bg-center shrink-0 border border-slate-300 dark:border-slate-600" data-alt="Minimalist geometric brand design preview thumbnail" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCRHEMKYLNyfThPa3otUPk-cW1LNe_dVIt8gNMK07BH3JENDFtQjghGgMULF9gGO5G3xZvPExl7diB9V6MMSQqOjTZHkQ9tt1EAZKBkHgif60M6eOF-nXLsdbbb1ovZDedBvF7hW5Kp9bRgBnKyIrSyHK9e1gONHuJ7ATRbi6hc0sWW0oyCWE37vpWWdSukLELdozGZP2zN7fzsmFrasJ1RdVsqOndK-h1OjLj8Gngff8ToYpMedPavTNaUvxssTXa2MkroROYtI08");'></div>
+</div>
+</div>
+<!-- Export Options List -->
+<div class="px-6 py-2 flex flex-col gap-3">
+<p class="text-slate-500 dark:text-slate-400 text-sm font-semibold uppercase tracking-wider pl-1 mb-1">Formats</p>
+<!-- Option: Photos -->
+<button class="flex items-center gap-4 w-full text-left group active:scale-[0.99] transition-transform">
+<div class="flex items-center justify-center shrink-0 w-12 h-12 rounded-xl bg-primary/10 text-primary">
+<span class="material-symbols-outlined text-2xl">image</span>
+</div>
+<div class="flex flex-col flex-1">
+<p class="text-slate-900 dark:text-white text-base font-bold group-hover:text-primary transition-colors">Save to Photos</p>
+<p class="text-slate-500 dark:text-slate-400 text-sm">PNG • 4.2 MB • High Quality</p>
+</div>
+<span class="material-symbols-outlined text-slate-400 dark:text-slate-500">chevron_right</span>
+</button>
+<!-- Option: PDF -->
+<button class="flex items-center gap-4 w-full text-left group active:scale-[0.99] transition-transform">
+<div class="flex items-center justify-center shrink-0 w-12 h-12 rounded-xl bg-red-500/10 text-red-500 dark:bg-red-500/20 dark:text-red-400">
+<span class="material-symbols-outlined text-2xl">picture_as_pdf</span>
+</div>
+<div class="flex flex-col flex-1">
+<p class="text-slate-900 dark:text-white text-base font-bold group-hover:text-red-500 dark:group-hover:text-red-400 transition-colors">Export PDF</p>
+<p class="text-slate-500 dark:text-slate-400 text-sm">Vector • Best for Print</p>
+</div>
+<span class="material-symbols-outlined text-slate-400 dark:text-slate-500">chevron_right</span>
+</button>
+<!-- Option: Email -->
+<button class="flex items-center gap-4 w-full text-left group active:scale-[0.99] transition-transform">
+<div class="flex items-center justify-center shrink-0 w-12 h-12 rounded-xl bg-purple-500/10 text-purple-600 dark:bg-purple-500/20 dark:text-purple-400">
+<span class="material-symbols-outlined text-2xl">mail</span>
+</div>
+<div class="flex flex-col flex-1">
+<p class="text-slate-900 dark:text-white text-base font-bold group-hover:text-purple-600 dark:group-hover:text-purple-400 transition-colors">Send via Email</p>
+<p class="text-slate-500 dark:text-slate-400 text-sm">Share link or attachment</p>
+</div>
+<span class="material-symbols-outlined text-slate-400 dark:text-slate-500">chevron_right</span>
+</button>
+</div>
+<!-- Settings Toggles -->
+<div class="px-6 py-4">
+<p class="text-slate-500 dark:text-slate-400 text-sm font-semibold uppercase tracking-wider pl-1 mb-3">Settings</p>
+<div class="flex items-center justify-between p-1">
+<div class="flex flex-col">
+<span class="text-slate-900 dark:text-white font-medium">Transparent Background</span>
+<span class="text-slate-500 dark:text-slate-400 text-xs">Remove background color layer</span>
+</div>
+<!-- Toggle Switch -->
+<button aria-checked="true" class="bg-primary relative inline-flex h-7 w-12 flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 dark:focus:ring-offset-background-dark" role="switch" type="button">
+<span aria-hidden="true" class="translate-x-5 pointer-events-none inline-block h-6 w-6 transform rounded-full bg-white shadow ring-0 transition duration-200 ease-in-out"></span>
+</button>
+</div>
+</div>
+<!-- Footer Actions -->
+<div class="px-6 mt-2">
+<button class="w-full flex items-center justify-center gap-2 py-4 rounded-xl border border-slate-300 dark:border-slate-700 hover:bg-slate-100 dark:hover:bg-slate-800/50 transition-colors text-slate-900 dark:text-white font-bold">
+<span class="material-symbols-outlined text-[20px]">ios_share</span>
+                        More Sharing Options
+                    </button>
+</div>
+<!-- Safe Area Spacer -->
+<div class="h-8"></div>
+</div>
+</div>
+</div>
+</body></html>

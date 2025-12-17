@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Home Search</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#13b6ec",
+                        "background-light": "#f6f8f8",
+                        "background-dark": "#101d22",
+                        "surface-dark": "#1e2d33",
+                        "surface-light": "#ffffff",
+                    },
+                    fontFamily: {
+                        "display": ["Manrope", "sans-serif"]
+                    },
+                    borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" },
+                },
+            },
+        }
+    </script>
+<style>
+        /* Custom scrollbar hide for cleaner UI */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-white min-h-screen flex flex-col antialiased selection:bg-primary/30 selection:text-primary">
+<!-- Sticky Header Area -->
+<header class="sticky top-0 z-50 bg-background-light/95 dark:bg-background-dark/95 backdrop-blur-md pt-4 pb-2 border-b border-transparent dark:border-white/5 shadow-sm dark:shadow-none transition-all duration-300">
+<div class="px-4">
+<!-- Search Bar Row -->
+<div class="flex items-center gap-3">
+<div class="relative flex-1 group">
+<div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+<span class="material-symbols-outlined text-slate-400 dark:text-[#92bbc9] transition-colors group-focus-within:text-primary">search</span>
+</div>
+<input autofocus="" class="block w-full rounded-lg border-none bg-surface-light dark:bg-surface-dark py-3 pl-10 pr-4 text-sm md:text-base text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-[#92bbc9]/70 focus:ring-2 focus:ring-primary focus:ring-opacity-50 transition-all shadow-sm" placeholder="Search scans, products, or designs..." type="text"/>
+<div class="absolute inset-y-0 right-0 flex items-center pr-3">
+<span class="material-symbols-outlined text-slate-400 cursor-pointer hover:text-slate-600 dark:hover:text-slate-200" style="font-size: 20px;">mic</span>
+</div>
+</div>
+<button class="text-primary hover:text-primary/80 text-base font-semibold whitespace-nowrap transition-colors">
+                    Cancel
+                </button>
+</div>
+<!-- Segmented Control Tabs -->
+<div class="mt-4 pb-2">
+<div class="flex w-full rounded-lg bg-slate-200 dark:bg-surface-dark p-1 gap-1">
+<!-- Tab: All -->
+<label class="flex-1 cursor-pointer">
+<input checked="" class="peer sr-only" name="search-filter" type="radio" value="all"/>
+<div class="flex items-center justify-center rounded py-1.5 text-sm font-medium text-slate-500 dark:text-[#92bbc9] transition-all peer-checked:bg-white dark:peer-checked:bg-background-dark peer-checked:text-primary peer-checked:shadow-sm dark:peer-checked:text-white dark:peer-checked:ring-1 dark:peer-checked:ring-white/10">
+                            All
+                        </div>
+</label>
+<!-- Tab: Authenticity -->
+<label class="flex-1 cursor-pointer">
+<input class="peer sr-only" name="search-filter" type="radio" value="scans"/>
+<div class="flex items-center justify-center rounded py-1.5 text-sm font-medium text-slate-500 dark:text-[#92bbc9] transition-all peer-checked:bg-white dark:peer-checked:bg-background-dark peer-checked:text-primary peer-checked:shadow-sm dark:peer-checked:text-white dark:peer-checked:ring-1 dark:peer-checked:ring-white/10">
+                            Scans
+                        </div>
+</label>
+<!-- Tab: Design -->
+<label class="flex-1 cursor-pointer">
+<input class="peer sr-only" name="search-filter" type="radio" value="designs"/>
+<div class="flex items-center justify-center rounded py-1.5 text-sm font-medium text-slate-500 dark:text-[#92bbc9] transition-all peer-checked:bg-white dark:peer-checked:bg-background-dark peer-checked:text-primary peer-checked:shadow-sm dark:peer-checked:text-white dark:peer-checked:ring-1 dark:peer-checked:ring-white/10">
+                            Designs
+                        </div>
+</label>
+</div>
+</div>
+</div>
+</header>
+<!-- Main Content Area -->
+<main class="flex-1 px-4 pt-2 pb-24 overflow-y-auto w-full max-w-3xl mx-auto">
+<!-- Section: Recent Activity -->
+<section class="mb-6">
+<div class="flex items-center justify-between pb-2 pt-4">
+<h3 class="text-lg font-bold leading-tight tracking-tight text-slate-900 dark:text-white">Recent Activity</h3>
+<button class="text-xs font-medium text-primary hover:text-primary/80">Clear All</button>
+</div>
+<div class="space-y-3">
+<!-- Result Card: Scan (Verified) -->
+<div class="group flex items-center gap-4 rounded-xl bg-white dark:bg-surface-dark p-3 shadow-sm dark:shadow-none border border-transparent dark:border-white/5 hover:border-primary/30 transition-all cursor-pointer">
+<div class="relative shrink-0">
+<div class="size-16 rounded-lg bg-cover bg-center bg-no-repeat shadow-inner" data-alt="Nike Dunk Low sneakers side view on light background" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAY58jIxCUhCcGIQGuUbUqXAbCd4KbUt5l5cV6WzOe9uqSf7bzgTQEi7taXBPbnGWDeTaheQ7HveqakZZVeUq6zDIekHtR4E98yxTNhMDlegIRTHjIHW6W3TO_1ppTcWU6lED3m69PPhyJtAPIbKGKKUkAWDNrb-9jTekvg25Ul7nf7gjIVuo8a_GN9RUZ0r2zQW87mfLNvEl1XIOdy6wnEonp5Yo0wmonRCmuBnTNSm4qkY_eMRN7vdEPl3wQA5KdGylqoPleTM5c");'></div>
+<div class="absolute -bottom-1 -right-1 flex h-5 w-5 items-center justify-center rounded-full bg-background-light dark:bg-background-dark ring-2 ring-white dark:ring-surface-dark">
+<span class="material-symbols-outlined text-primary" style="font-size: 14px;">verified</span>
+</div>
+</div>
+<div class="flex flex-col justify-center flex-1 min-w-0">
+<p class="truncate text-base font-semibold text-slate-900 dark:text-white group-hover:text-primary transition-colors">Nike Dunk Low - Retro</p>
+<div class="flex items-center gap-1.5 mt-0.5">
+<span class="inline-flex items-center rounded bg-emerald-500/10 px-1.5 py-0.5 text-[10px] font-bold text-emerald-600 dark:text-emerald-400 ring-1 ring-inset ring-emerald-500/20">VERIFIED</span>
+<span class="text-xs text-slate-500 dark:text-[#92bbc9]">SN: 8932-12 • 2 mins ago</span>
+</div>
+</div>
+<div class="shrink-0 text-slate-300 dark:text-slate-600">
+<span class="material-symbols-outlined">chevron_right</span>
+</div>
+</div>
+<!-- Result Card: Design (Draft) -->
+<div class="group flex items-center gap-4 rounded-xl bg-white dark:bg-surface-dark p-3 shadow-sm dark:shadow-none border border-transparent dark:border-white/5 hover:border-primary/30 transition-all cursor-pointer">
+<div class="relative shrink-0 flex items-center justify-center size-16 rounded-lg bg-indigo-500/10 dark:bg-indigo-500/20">
+<span class="material-symbols-outlined text-indigo-500 dark:text-indigo-400" style="font-size: 32px;">design_services</span>
+</div>
+<div class="flex flex-col justify-center flex-1 min-w-0">
+<p class="truncate text-base font-semibold text-slate-900 dark:text-white group-hover:text-primary transition-colors">Project: Apex Rebrand</p>
+<div class="flex items-center gap-1.5 mt-0.5">
+<span class="inline-flex items-center rounded bg-amber-500/10 px-1.5 py-0.5 text-[10px] font-bold text-amber-600 dark:text-amber-400 ring-1 ring-inset ring-amber-500/20">DRAFT</span>
+<span class="text-xs text-slate-500 dark:text-[#92bbc9]">v2.4 • Edited yesterday</span>
+</div>
+</div>
+<div class="shrink-0 text-slate-300 dark:text-slate-600">
+<span class="material-symbols-outlined">edit</span>
+</div>
+</div>
+<!-- Result Card: Scan (Failed/Pending) -->
+<div class="group flex items-center gap-4 rounded-xl bg-white dark:bg-surface-dark p-3 shadow-sm dark:shadow-none border border-transparent dark:border-white/5 hover:border-primary/30 transition-all cursor-pointer">
+<div class="relative shrink-0">
+<div class="size-16 rounded-lg bg-cover bg-center bg-no-repeat shadow-inner" data-alt="Luxury wrist watch detail shot" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCbcjyajKROGAx3SHOCyLLucfqazDg8bRzAwfFzO-BLLZCK-f0rUbe_bvf72TQZOfsz_B1Lf3UK6-RJKXNALvPzYKMtGfPS-FqpJBX25dBg0ooyl-m0nne5U561a8yPaXH392Smm-D6m5mkTiwixNxCGXDSbzkAsEoyy1qTmqaQT8zb2_tUNfmruAoxx8QiFQr78nhobrfFjNK3PgqKb-qg8qO9WuPoHkxvAFsDp9uAz2h4mJdENz3soO3G7sEYICYNSjUMykXci5w");'></div>
+</div>
+<div class="flex flex-col justify-center flex-1 min-w-0">
+<p class="truncate text-base font-semibold text-slate-900 dark:text-white group-hover:text-primary transition-colors">Rolex Submariner</p>
+<div class="flex items-center gap-1.5 mt-0.5">
+<span class="inline-flex items-center rounded bg-slate-500/10 px-1.5 py-0.5 text-[10px] font-bold text-slate-600 dark:text-slate-400 ring-1 ring-inset ring-slate-500/20">PENDING</span>
+<span class="text-xs text-slate-500 dark:text-[#92bbc9]">Scan #4002 • 1 hr ago</span>
+</div>
+</div>
+<div class="shrink-0 text-slate-300 dark:text-slate-600">
+<span class="material-symbols-outlined">chevron_right</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Section: Suggested Scans -->
+<section>
+<h3 class="text-lg font-bold leading-tight tracking-tight text-slate-900 dark:text-white px-0 pb-2 pt-4">Suggested Designs</h3>
+<div class="grid grid-cols-2 gap-3">
+<!-- Grid Card 1 -->
+<div class="group flex flex-col rounded-xl bg-white dark:bg-surface-dark p-3 shadow-sm dark:shadow-none border border-transparent dark:border-white/5 hover:border-primary/30 transition-all cursor-pointer">
+<div class="h-24 w-full rounded-lg bg-cover bg-center mb-3" data-alt="Abstract colorful 3d shapes gradient design" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuC_u9X_zZhwuF-ySBF-bsunmy8b6ak9c8TiNxNwdLJeFXvnq7pKERWyerFbrZEzDhkqiMNN54f7gwAGs6O-dTCdEg6jiRtzI1QC0879Y2JgRT2uRtJiL0QiT2lQuwpu5RAPOWt2FvmOsmj8nlQ3g1WvARF-jAa4cvL_z5mUkvVHlgfV6SI3AFFptc5Iyy6-fWYLa2AmvHejHRJeUP5SxHlOHcjURNUWCupYDmzWPAp9DlAoUlvs9SO6O5ChznsMxx_DBgIXEHRdHzo");'></div>
+<p class="truncate text-sm font-semibold text-slate-900 dark:text-white">Neon Identity</p>
+<p class="text-xs text-slate-500 dark:text-[#92bbc9] mt-0.5">Brand Kit • 3 files</p>
+</div>
+<!-- Grid Card 2 -->
+<div class="group flex flex-col rounded-xl bg-white dark:bg-surface-dark p-3 shadow-sm dark:shadow-none border border-transparent dark:border-white/5 hover:border-primary/30 transition-all cursor-pointer">
+<div class="h-24 w-full rounded-lg bg-cover bg-center mb-3" data-alt="Minimalist architectural sketch on paper" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBr2zPVYvbs3_rHbGHInIKwMu9KTC9SNr_wj_ub9Uj6UAtNhHi0hR6UKkWQN1R-i4NA7miSXomRjPBGUjdE4a7f2TFtq6PxWrCfwj6oWBZ2iW0dcUtebuzOj0X5uA-_0ltw97G8hKqffg4JnKh9bodKa1lNqZFqHe7tbRZYBEtSyDVXYikZAzUSL3s6harxYpx3xXHsRZLxEkCyCRSAmI_2nKzHQNRZuB4ajcA5WOuQ8uQR1qfHIabbhes2e0JqbsPK4umUe6qXNlM");'></div>
+<p class="truncate text-sm font-semibold text-slate-900 dark:text-white">Studio Interior</p>
+<p class="text-xs text-slate-500 dark:text-[#92bbc9] mt-0.5">Blueprint • PDF</p>
+</div>
+</div>
+</section>
+<!-- Bottom Spacer for FAB -->
+<div class="h-10"></div>
+</main>
+<!-- Floating Action Button (FAB) -->
+<div class="fixed bottom-6 right-6 z-40">
+<button class="flex items-center justify-center size-14 rounded-full bg-primary text-white shadow-lg shadow-primary/30 hover:bg-primary/90 hover:scale-105 active:scale-95 transition-all focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary dark:ring-offset-background-dark">
+<span class="material-symbols-outlined" style="font-size: 28px;">qr_code_scanner</span>
+</button>
+</div>
+</body></html>

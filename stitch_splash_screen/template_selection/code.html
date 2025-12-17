@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Template Selection</title>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#13b6ec",
+                        "background-light": "#f6f8f8",
+                        "background-dark": "#101d22",
+                        "surface-dark": "#1c2a30", 
+                        "secondary-text": "#92bbc9"
+                    },
+                    fontFamily: {
+                        "display": ["Manrope", "sans-serif"]
+                    },
+                    borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" },
+                },
+            },
+        }
+    </script>
+<style>
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-white font-display antialiased selection:bg-primary selection:text-white">
+<div class="relative flex min-h-screen w-full flex-col mx-auto max-w-md bg-background-light dark:bg-background-dark overflow-x-hidden shadow-2xl">
+<!-- Header -->
+<div class="sticky top-0 z-20 bg-background-light dark:bg-background-dark/95 backdrop-blur-sm p-4 pb-2">
+<div class="flex items-center justify-between">
+<button class="text-slate-900 dark:text-white flex size-12 shrink-0 items-center justify-start hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-[24px]">arrow_back</span>
+</button>
+<h2 class="text-slate-900 dark:text-white text-lg font-bold leading-tight tracking-[-0.015em] flex-1 text-center pr-12">Select Template</h2>
+</div>
+</div>
+<!-- Search Bar -->
+<div class="px-4 py-2">
+<label class="flex flex-col h-12 w-full">
+<div class="flex w-full flex-1 items-stretch rounded-lg h-full shadow-sm">
+<div class="text-slate-400 dark:text-[#92bbc9] flex border-none bg-white dark:bg-[#233f48] items-center justify-center pl-4 rounded-l-lg border-r-0">
+<span class="material-symbols-outlined text-[24px]">search</span>
+</div>
+<input class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-slate-900 dark:text-white focus:outline-0 focus:ring-2 focus:ring-primary/50 border-none bg-white dark:bg-[#233f48] focus:border-none h-full placeholder:text-slate-400 dark:placeholder:text-[#92bbc9] px-4 rounded-l-none border-l-0 pl-2 text-base font-normal leading-normal transition-all" placeholder="Search styles, tags..." value=""/>
+</div>
+</label>
+</div>
+<!-- AI Toggle -->
+<div class="flex items-center gap-4 px-4 py-2 min-h-14 justify-between border-b border-slate-200 dark:border-white/5 mx-4 mb-2">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[20px]">auto_awesome</span>
+<p class="text-slate-900 dark:text-white text-base font-medium leading-normal flex-1 truncate">AI-Generated Only</p>
+</div>
+<div class="shrink-0">
+<label class="relative flex h-[24px] w-[44px] cursor-pointer items-center rounded-full border-none bg-slate-300 dark:bg-[#233f48] p-1 has-[:checked]:justify-end has-[:checked]:bg-primary transition-colors duration-300">
+<div class="h-[18px] w-[18px] rounded-full bg-white shadow-sm transition-all duration-300"></div>
+<input class="invisible absolute" type="checkbox"/>
+</label>
+</div>
+</div>
+<!-- Filter Chips -->
+<div class="flex gap-3 px-4 pb-4 overflow-x-auto no-scrollbar mask-linear-gradient">
+<button class="flex h-8 shrink-0 items-center justify-center gap-x-2 rounded-full bg-primary pl-4 pr-4 transition-transform active:scale-95">
+<p class="text-white text-sm font-medium leading-normal">All</p>
+</button>
+<button class="flex h-8 shrink-0 items-center justify-center gap-x-2 rounded-full bg-white dark:bg-[#233f48] hover:bg-slate-100 dark:hover:bg-[#2c4e59] pl-4 pr-4 border border-slate-200 dark:border-transparent transition-all active:scale-95">
+<p class="text-slate-700 dark:text-white text-sm font-medium leading-normal">Modern</p>
+</button>
+<button class="flex h-8 shrink-0 items-center justify-center gap-x-2 rounded-full bg-white dark:bg-[#233f48] hover:bg-slate-100 dark:hover:bg-[#2c4e59] pl-4 pr-4 border border-slate-200 dark:border-transparent transition-all active:scale-95">
+<p class="text-slate-700 dark:text-white text-sm font-medium leading-normal">Vintage</p>
+</button>
+<button class="flex h-8 shrink-0 items-center justify-center gap-x-2 rounded-full bg-white dark:bg-[#233f48] hover:bg-slate-100 dark:hover:bg-[#2c4e59] pl-4 pr-4 border border-slate-200 dark:border-transparent transition-all active:scale-95">
+<p class="text-slate-700 dark:text-white text-sm font-medium leading-normal">Tech</p>
+</button>
+<button class="flex h-8 shrink-0 items-center justify-center gap-x-2 rounded-full bg-white dark:bg-[#233f48] hover:bg-slate-100 dark:hover:bg-[#2c4e59] pl-4 pr-4 border border-slate-200 dark:border-transparent transition-all active:scale-95">
+<p class="text-slate-700 dark:text-white text-sm font-medium leading-normal">Organic</p>
+</button>
+<button class="flex h-8 shrink-0 items-center justify-center gap-x-2 rounded-full bg-white dark:bg-[#233f48] hover:bg-slate-100 dark:hover:bg-[#2c4e59] pl-4 pr-4 border border-slate-200 dark:border-transparent transition-all active:scale-95">
+<p class="text-slate-700 dark:text-white text-sm font-medium leading-normal">Luxury</p>
+</button>
+</div>
+<!-- Template Grid -->
+<div class="grid grid-cols-2 gap-4 p-4 pb-24">
+<!-- Card 1 -->
+<div class="group flex flex-col gap-3 pb-2 cursor-pointer">
+<div class="relative w-full aspect-[3/4] overflow-hidden rounded-xl shadow-md">
+<div class="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-105" data-alt="Dark abstract geometric pattern with glowing blue lines resembling a circuit board" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuA7-m1LPTOG0QIEgmZIsVTDKs15pnhU0PJybAZsq7mhzgZPw9z7WVS8hc3tY0Ii5vLQxv8_44Xk0_TNJu7Kj3qmqRCI5MvNqdJT3sR7DhjyXCPM_XcrLvCoqV9iVrNWwiDMBJp52QAMDXolsUkcdQg7IgjH8WraNLLrXAK3XkEVRs5evg8O-lA_EGc9cWm64Uto-UHaQCb4oVPOmFe5SqSYqats9qngWSNJ9A-oetDudP8NZ-QBAbNbriUT3SH5LJcp-pXMQF53N48");'></div>
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-60"></div>
+<div class="absolute top-2 right-2 bg-primary/90 backdrop-blur-sm px-2 py-0.5 rounded text-[10px] font-bold text-white uppercase tracking-wider shadow-sm">
+                        Pro
+                    </div>
+</div>
+<div>
+<p class="text-slate-900 dark:text-white text-base font-bold leading-normal">Cosmic Authenticity</p>
+<p class="text-slate-500 dark:text-[#92bbc9] text-sm font-normal leading-normal">Tech • Minimal</p>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="group flex flex-col gap-3 pb-2 cursor-pointer">
+<div class="relative w-full aspect-[3/4] overflow-hidden rounded-xl shadow-md">
+<div class="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-105" data-alt="Clean white marble texture with gold foil minimalist typography" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuA08T1_35PwyXQcR4ONT6l9JVuNPj_okSbnD9q8S2V9XzNxHkL2m0U3pGzd68yVUzDh0e6uBWnBiA3o5nJKYB8UAEj-0VKZMi1NqIk1Er7wRcRuEn7P9fdMLfO4q63O0jL73wpQJ55hN-HXgaEig6hhFqn2RbgoNFASCnGhNf_usbOZYFc9XaUwZJNZodzOmfnvj2ftdGIcDvjNxQVb7jT54TuwtAoOxCB1RDE61MNSyYOwbDh3bOmkF0UIj62oECqVQurO-cTmQEY");'></div>
+<div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-40"></div>
+<div class="absolute top-2 right-2 bg-slate-700/80 backdrop-blur-sm px-2 py-0.5 rounded text-[10px] font-bold text-white uppercase tracking-wider shadow-sm">
+                        Free
+                    </div>
+</div>
+<div>
+<p class="text-slate-900 dark:text-white text-base font-bold leading-normal">Verified Batch</p>
+<p class="text-slate-500 dark:text-[#92bbc9] text-sm font-normal leading-normal">Clean • Industrial</p>
+</div>
+</div>
+<!-- Card 3 -->
+<div class="group flex flex-col gap-3 pb-2 cursor-pointer">
+<div class="relative w-full aspect-[3/4] overflow-hidden rounded-xl shadow-md">
+<div class="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-105" data-alt="Holographic foil texture shimmering in pink and blue gradients" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAsAdXHbZfEM08mMBnDeRi18N4cj3Lc0Xseu0SEg03ObICCFEvL9o-6HmncrIAVlFQq8JalkpG5EnS4Mh1T0Wa4Gb6rFos0ud1u8T2vKkvsJ4KRTZ-OQ81TooVac2yLwFPWRIh5rUC2Vep3JFBqbWG0pHj6AkiiMPasft5POEcqZ3tcFZlcuBfLDOPOVpDJ0qDSB-4Sn8E0YBmeiOvCBSwKS5UY2ZJl-kfBxbG5DzpNS5qrcZZa8R_AM_vGWpDapxXdLlnAusNmjZc");'></div>
+<div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-40"></div>
+<div class="absolute top-2 right-2 bg-primary/90 backdrop-blur-sm px-2 py-0.5 rounded text-[10px] font-bold text-white uppercase tracking-wider shadow-sm">
+                        Pro
+                    </div>
+</div>
+<div>
+<p class="text-slate-900 dark:text-white text-base font-bold leading-normal">Secure Seal</p>
+<p class="text-slate-500 dark:text-[#92bbc9] text-sm font-normal leading-normal">Security • Hologram</p>
+</div>
+</div>
+<!-- Card 4 -->
+<div class="group flex flex-col gap-3 pb-2 cursor-pointer">
+<div class="relative w-full aspect-[3/4] overflow-hidden rounded-xl shadow-md">
+<div class="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-105" data-alt="Dark leather texture background with embossed gold seal logo" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBZ4Xgyj5E_bgwiaPkRp3MpI6PxfQeeovkaf0VKkAK_i0QkcraG9X3F-VDb-iAIO-I1SDQvK67jeVj0j1Pethcc7YRg-Iq59SvkpALZEPInUChYVpLDqdIu_X6v824olDcvc3dHYdFc3JVWobp6KHSKGUKC6TaqypgUtO1gITXTqU4NZLK_xtSmV42dGeoRwq7taTau75v8dvBtthd-jG589INL2xQAnf_i2DPgdEBoJvte7zYVal19XNvyVkFTM9W5dZDeScw4pbc");'></div>
+<div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-40"></div>
+<div class="absolute top-2 right-2 bg-primary/90 backdrop-blur-sm px-2 py-0.5 rounded text-[10px] font-bold text-white uppercase tracking-wider shadow-sm">
+                        Pro
+                    </div>
+</div>
+<div>
+<p class="text-slate-900 dark:text-white text-base font-bold leading-normal">Limited Edition</p>
+<p class="text-slate-500 dark:text-[#92bbc9] text-sm font-normal leading-normal">Luxury • Vintage</p>
+</div>
+</div>
+<!-- Card 5 -->
+<div class="group flex flex-col gap-3 pb-2 cursor-pointer">
+<div class="relative w-full aspect-[3/4] overflow-hidden rounded-xl shadow-md">
+<div class="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-105" data-alt="Close up of a QR code printed on recycled kraft paper" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAAF5ZR3fpOThcoTS7TQUK5SldhHR80Bkvryyf-dYe2fKamtu8L01Zs9I7nlmvbH0ERDdZyDEUbsD5xqJSuFRkiub5fv2gE7gvaA1SRuiSK_N-VsC-agu8v7ArXKB101Ap8iVWCt6Ln1hYLvNHfFKM-0o1aA26jY1wLZ_bfR21lpvr3AcYK3OaD749VOt04ZSqCVwKq3hoVK0PkRl9G4xKUz0K6vMLBHTrUfD7j8mRqn6wV-dAdNsiPkm77hMNF3_xg2HhhmmnBLdc");'></div>
+<div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-40"></div>
+<div class="absolute top-2 right-2 bg-slate-700/80 backdrop-blur-sm px-2 py-0.5 rounded text-[10px] font-bold text-white uppercase tracking-wider shadow-sm">
+                        Free
+                    </div>
+</div>
+<div>
+<p class="text-slate-900 dark:text-white text-base font-bold leading-normal">Bio Origin</p>
+<p class="text-slate-500 dark:text-[#92bbc9] text-sm font-normal leading-normal">Organic • Eco</p>
+</div>
+</div>
+<!-- Card 6 -->
+<div class="group flex flex-col gap-3 pb-2 cursor-pointer">
+<div class="relative w-full aspect-[3/4] overflow-hidden rounded-xl shadow-md">
+<div class="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-105" data-alt="Neon blue digital grid perspective on black background" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAzSDsxOWf11x8SGnTozWs68aOBcX-sDvJL_UuXOtPCPbduFAESXweUyKrZVAIEMYVL3-DF5xrfuaMjpuzq0Am4zfrF8Ws7SsnD2xMe7tYKrmPAoYX8myUWnngbNsM_AA7ZY8iGgnRYGoUw3uINQYcwaKGA4IT57sOpc1QPWMU_w1_h8rhqShr6E6tu6GamSZ5hy1mVipxb6KsSOh_duEyAdEKr0OATXPBbrLWsSkL0UZi8_UeXcyou1sppaVU7AaC1xwXytrC0b3M");'></div>
+<div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-40"></div>
+<div class="absolute top-2 right-2 bg-slate-700/80 backdrop-blur-sm px-2 py-0.5 rounded text-[10px] font-bold text-white uppercase tracking-wider shadow-sm">
+                        Free
+                    </div>
+</div>
+<div>
+<p class="text-slate-900 dark:text-white text-base font-bold leading-normal">NFC Tag</p>
+<p class="text-slate-500 dark:text-[#92bbc9] text-sm font-normal leading-normal">Tech • Functional</p>
+</div>
+</div>
+</div>
+<!-- Floating Action Button -->
+<button class="fixed bottom-6 right-6 flex items-center justify-center size-14 rounded-full bg-primary text-white shadow-[0_8px_16px_rgba(19,182,236,0.4)] hover:shadow-[0_10px_20px_rgba(19,182,236,0.5)] transition-all active:scale-90 z-30">
+<span class="material-symbols-outlined text-[32px]">add</span>
+</button>
+<div class="h-5 bg-transparent"></div>
+</div>
+</body></html>

@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Brand Kit Editor</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#13b6ec",
+                        "background-light": "#f6f8f8",
+                        "background-dark": "#101d22",
+                    },
+                    fontFamily: {
+                        "display": ["Manrope", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        /* Custom scrollbar hide for cleaner mobile look */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display text-[#111e22] dark:text-white">
+<div class="relative flex h-full min-h-screen w-full flex-col overflow-x-hidden max-w-md mx-auto shadow-2xl bg-background-light dark:bg-background-dark">
+<!-- TopAppBar -->
+<div class="flex items-center sticky top-0 z-50 bg-background-light dark:bg-background-dark p-4 pb-2 justify-between border-b border-gray-200 dark:border-gray-800">
+<div class="text-[#111e22] dark:text-white flex size-12 shrink-0 items-center justify-start cursor-pointer">
+<span class="material-symbols-outlined text-2xl">arrow_back</span>
+</div>
+<h2 class="text-[#111e22] dark:text-white text-lg font-bold leading-tight tracking-[-0.015em] flex-1 text-center">Edit Brand Kit</h2>
+<div class="flex w-12 items-center justify-end">
+<button class="text-primary text-base font-bold leading-normal tracking-[0.015em] shrink-0 hover:text-primary/80 transition-colors">Save</button>
+</div>
+</div>
+<div class="flex-1 overflow-y-auto pb-24">
+<!-- SectionHeader: Logos -->
+<div class="px-4 pb-2 pt-6">
+<h3 class="text-[#111e22] dark:text-white text-lg font-bold leading-tight tracking-[-0.015em]">Logos</h3>
+</div>
+<!-- ImageGrid / Logo Uploads -->
+<div class="grid grid-cols-2 gap-4 p-4">
+<!-- Main Logo Card -->
+<div class="group flex flex-col gap-3 relative cursor-pointer">
+<div class="relative w-full aspect-square rounded-xl bg-gray-200 dark:bg-[#1c2e35] overflow-hidden border-2 border-dashed border-gray-400 dark:border-gray-600 hover:border-primary dark:hover:border-primary transition-colors flex items-center justify-center">
+<!-- Placeholder Content -->
+<div class="absolute inset-0 flex flex-col items-center justify-center p-4">
+<span class="material-symbols-outlined text-gray-400 dark:text-gray-500 text-3xl mb-2">cloud_upload</span>
+<span class="text-xs text-gray-500 dark:text-gray-400 font-medium">Upload</span>
+</div>
+<!-- Actual Image (Hidden if empty, shown if present) -->
+<div class="absolute inset-0 bg-center bg-no-repeat bg-contain p-4" data-alt="Main brand logo preview" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCl5K63AOjyyLc9C48Ta-66zFZfMw8DGin-T_cKxuWz-YtGw4c-nHGDDxnd1AGZIDmTOtgsOOCosZAnzWVq894-0uCz86XPdV_09Ib2loIpDUbLMIb9pj_ToY6fvqRCw1bA2Q70o01LGLea4H9yHwSdg0qc4-qOIr5aeAErhoZ9kQYgEdTGVJiUFt6I6Ac66V52adjvXA4YWOvQYw9uSWGkc38ai746ilv5fhhcGcSyfdKvSfEnWq1cHbmICU7QKNX3KTdjNAmI6tI");'>
+<div class="absolute top-2 right-2 bg-black/50 hover:bg-red-500 rounded-full p-1 text-white transition-colors">
+<span class="material-symbols-outlined text-sm">close</span>
+</div>
+</div>
+</div>
+<p class="text-[#111e22] dark:text-white text-sm font-semibold leading-normal text-center">Main Logo</p>
+</div>
+<!-- Watermark Card (Empty State) -->
+<div class="group flex flex-col gap-3 relative cursor-pointer">
+<div class="relative w-full aspect-square rounded-xl bg-gray-200 dark:bg-[#1c2e35] overflow-hidden border-2 border-dashed border-gray-400 dark:border-gray-600 hover:border-primary dark:hover:border-primary transition-colors flex items-center justify-center">
+<div class="flex flex-col items-center justify-center p-4 text-center">
+<span class="material-symbols-outlined text-primary text-3xl mb-2">add_photo_alternate</span>
+<span class="text-xs text-gray-500 dark:text-gray-400 font-medium">Add Watermark</span>
+</div>
+</div>
+<p class="text-[#111e22] dark:text-white text-sm font-semibold leading-normal text-center">Watermark</p>
+</div>
+</div>
+<div class="h-px bg-gray-200 dark:bg-gray-800 mx-4 my-2"></div>
+<!-- SectionHeader: Brand Colors -->
+<div class="flex items-center justify-between px-4 pb-2 pt-4">
+<h3 class="text-[#111e22] dark:text-white text-lg font-bold leading-tight tracking-[-0.015em]">Brand Colors</h3>
+<button class="text-primary text-sm font-bold flex items-center gap-1 hover:text-primary/80">
+<span class="material-symbols-outlined text-lg">add_circle</span>
+                    Add New
+                </button>
+</div>
+<!-- RadioList / Color Swatches -->
+<div class="flex flex-wrap gap-4 p-4">
+<!-- Color 1 (Primary) -->
+<div class="flex flex-col items-center gap-2">
+<label class="group relative size-12 rounded-full border border-gray-300 dark:border-gray-600 cursor-pointer shadow-sm transition-transform active:scale-95" style="background-color: #13b6ec;">
+<input checked="" class="peer sr-only" name="brand-color" type="radio"/>
+<div class="absolute inset-0 rounded-full ring-2 ring-offset-2 ring-offset-background-light dark:ring-offset-background-dark ring-primary opacity-0 peer-checked:opacity-100 transition-opacity"></div>
+<div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+<span class="material-symbols-outlined text-white drop-shadow-md text-lg">edit</span>
+</div>
+</label>
+<span class="text-xs font-mono text-gray-500 dark:text-gray-400">#13B6EC</span>
+</div>
+<!-- Color 2 (Dark) -->
+<div class="flex flex-col items-center gap-2">
+<label class="group relative size-12 rounded-full border border-gray-300 dark:border-gray-600 cursor-pointer shadow-sm transition-transform active:scale-95" style="background-color: #121212;">
+<input class="peer sr-only" name="brand-color" type="radio"/>
+<div class="absolute inset-0 rounded-full ring-2 ring-offset-2 ring-offset-background-light dark:ring-offset-background-dark ring-primary opacity-0 peer-checked:opacity-100 transition-opacity"></div>
+<div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+<span class="material-symbols-outlined text-white drop-shadow-md text-lg">edit</span>
+</div>
+</label>
+<span class="text-xs font-mono text-gray-500 dark:text-gray-400">#121212</span>
+</div>
+<!-- Color 3 (Light) -->
+<div class="flex flex-col items-center gap-2">
+<label class="group relative size-12 rounded-full border border-gray-300 dark:border-gray-600 cursor-pointer shadow-sm transition-transform active:scale-95" style="background-color: #ffffff;">
+<input class="peer sr-only" name="brand-color" type="radio"/>
+<div class="absolute inset-0 rounded-full ring-2 ring-offset-2 ring-offset-background-light dark:ring-offset-background-dark ring-primary opacity-0 peer-checked:opacity-100 transition-opacity"></div>
+<div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+<span class="material-symbols-outlined text-gray-800 drop-shadow-md text-lg">edit</span>
+</div>
+</label>
+<span class="text-xs font-mono text-gray-500 dark:text-gray-400">#FFFFFF</span>
+</div>
+<!-- Color 4 (Accent) -->
+<div class="flex flex-col items-center gap-2">
+<label class="group relative size-12 rounded-full border border-gray-300 dark:border-gray-600 cursor-pointer shadow-sm transition-transform active:scale-95" style="background-color: #FF6B6B;">
+<input class="peer sr-only" name="brand-color" type="radio"/>
+<div class="absolute inset-0 rounded-full ring-2 ring-offset-2 ring-offset-background-light dark:ring-offset-background-dark ring-primary opacity-0 peer-checked:opacity-100 transition-opacity"></div>
+<div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+<span class="material-symbols-outlined text-white drop-shadow-md text-lg">edit</span>
+</div>
+</label>
+<span class="text-xs font-mono text-gray-500 dark:text-gray-400">#FF6B6B</span>
+</div>
+</div>
+<div class="h-px bg-gray-200 dark:bg-gray-800 mx-4 my-2"></div>
+<!-- SectionHeader: Typography -->
+<div class="px-4 pb-2 pt-4">
+<h3 class="text-[#111e22] dark:text-white text-lg font-bold leading-tight tracking-[-0.015em]">Typography</h3>
+</div>
+<!-- Typography Stack -->
+<div class="flex flex-col gap-4 p-4">
+<!-- Header Font -->
+<div class="flex flex-col gap-2 p-4 rounded-xl bg-white dark:bg-[#1c2e35] shadow-sm border border-gray-100 dark:border-gray-700">
+<div class="flex items-center justify-between">
+<span class="text-xs uppercase tracking-wider font-bold text-gray-500 dark:text-gray-400">Headlines</span>
+<button class="text-primary text-sm font-medium hover:underline">Change</button>
+</div>
+<div class="flex items-center justify-between mt-1">
+<div>
+<p class="text-xl font-bold text-[#111e22] dark:text-white">Manrope Bold</p>
+<p class="text-sm text-gray-500 dark:text-gray-400 mt-1">The quick brown fox jumps over the lazy dog.</p>
+</div>
+<span class="material-symbols-outlined text-gray-400">arrow_forward_ios</span>
+</div>
+</div>
+<!-- Body Font -->
+<div class="flex flex-col gap-2 p-4 rounded-xl bg-white dark:bg-[#1c2e35] shadow-sm border border-gray-100 dark:border-gray-700">
+<div class="flex items-center justify-between">
+<span class="text-xs uppercase tracking-wider font-bold text-gray-500 dark:text-gray-400">Body Copy</span>
+<button class="text-primary text-sm font-medium hover:underline">Change</button>
+</div>
+<div class="flex items-center justify-between mt-1">
+<div>
+<p class="text-lg font-normal text-[#111e22] dark:text-white">Inter Regular</p>
+<p class="text-sm text-gray-500 dark:text-gray-400 mt-1">Authenticity starts with trust and verified data.</p>
+</div>
+<span class="material-symbols-outlined text-gray-400">arrow_forward_ios</span>
+</div>
+</div>
+</div>
+<div class="h-px bg-gray-200 dark:bg-gray-800 mx-4 my-2"></div>
+<!-- SectionHeader: Brand Assets -->
+<div class="px-4 pb-2 pt-4 flex justify-between items-center">
+<h3 class="text-[#111e22] dark:text-white text-lg font-bold leading-tight tracking-[-0.015em]">Assets</h3>
+<button class="text-primary text-sm font-bold flex items-center gap-1 hover:text-primary/80">
+<span class="material-symbols-outlined text-lg">upload_file</span>
+                    Upload
+                </button>
+</div>
+<!-- Assets Grid -->
+<div class="grid grid-cols-3 gap-3 p-4">
+<div class="aspect-square bg-gray-200 dark:bg-[#1c2e35] rounded-lg bg-cover bg-center border border-gray-300 dark:border-gray-700" data-alt="Abstract geometric pattern with blue and purple gradients" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDF0Al9IZUssciwXePzxSXP_vO7RJk36f5fhK1wa5rAXHuCLN1EYsvSgwzlpJbJohtfxwNOmVa6KbuuCMPEvKSJeMqtcltLxX7QBnk3bWaCRlQIXfmxtxhOEBIWPNyfihBA0d-DQ2giJ6XTZYnNJQtgJc38p5tCHOdQN2Yb0Z_6SAmvgVCTNAlMzFGCyztiaG7TYK46KLsNuwso7pli6rrvIlKrSNs0pMnEuYjdGmXjHR_5jEGBxIQJ1z2mJXXqcr-acjqQ3qLp5mg");'></div>
+<div class="aspect-square bg-gray-200 dark:bg-[#1c2e35] rounded-lg bg-cover bg-center border border-gray-300 dark:border-gray-700" data-alt="Minimalist icon set preview" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAlwEiDZeZmupVpzK8ls4lbMQDjHoAeGPlXjnFpOkXayCvEczdER7zpko5_GQFRLBFAzBEa0ajxfnW1-xQ4Rz-lFHXSaG3RcZPOK_7NEW1w7_bNazwHVu5Lk9p1CwmJj3E42fw7b1osp3SYkMAMLLawNKw7P6aqTvnOdniJ2sZVhrCqeKiWHGJmroz_cPu6K6snMqU0YseUGxwlKfadS9XgtdHNisaYnh04aT2qHtWcQzQWllY33sveD_KF2sGBAKZlONEi7MTtMo4");'></div>
+<div class="aspect-square bg-gray-200 dark:bg-[#1c2e35] rounded-lg flex items-center justify-center border-2 border-dashed border-gray-300 dark:border-gray-600 text-gray-400 dark:text-gray-500 hover:text-primary hover:border-primary cursor-pointer transition-colors">
+<span class="material-symbols-outlined">add</span>
+</div>
+</div>
+</div>
+<!-- Sticky Bottom Bar -->
+<div class="absolute bottom-6 left-0 right-0 px-4">
+<button class="w-full bg-primary hover:bg-[#11a3d4] text-white font-bold h-12 rounded-full shadow-lg flex items-center justify-center gap-2 transition-transform active:scale-[0.98]">
+<span class="material-symbols-outlined">check_circle</span>
+                Apply to Project
+            </button>
+</div>
+</div>
+</body></html>

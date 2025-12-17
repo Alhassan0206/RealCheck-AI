@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Bulk Actions</title>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700&amp;family=Noto+Sans:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#13b6ec",
+                        "background-light": "#f6f8f8",
+                        "background-dark": "#101d22",
+                        "surface-dark": "#16262c", // Slightly lighter than background-dark for cards
+                    },
+                    fontFamily: {
+                        "display": ["Manrope", "sans-serif"],
+                        "body": ["Noto Sans", "sans-serif"],
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>/* Custom Checkbox Style to match design */
+.custom-checkbox:checked {
+    background-color: #13b6ec;
+    border-color: #13b6ec;
+    background-image: url(https://lh3.googleusercontent.com/aida-public/AB6AXuCPuonyUmBkjqC9XXjY6TNPWsvbQwW8NOGSVIWb6zbrJSVFpkT5g0nLGK7750lZx-_9S4RC_2jq4d-XGmK6TpcC-zVNZlawY3ZIY6FO3HIDWi7wRhoE7S00HZv-1UmlMtGvvkjlUrY2Umj0HiWjbvQx4P_SlGt1kk4BBn3qVMVuslaGkTFCSinjRhvzlMYE8Xnt8jlckZxc0GzhGl6w1wF4xcUkjk8ePCKKhMKCwGutmsueLrrWzZm4CRSsgU8Wlro9CwBJSrYqD_M)
+    }</style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display text-white overflow-x-hidden antialiased selection:bg-primary/30">
+<div class="relative flex min-h-screen w-full flex-col pb-24">
+<!-- Top App Bar -->
+<header class="sticky top-0 z-20 flex items-center justify-between bg-surface-dark/95 backdrop-blur-md px-4 py-3 border-b border-[#233f48]">
+<div class="flex size-10 shrink-0 items-center justify-center rounded-full hover:bg-white/5 cursor-pointer text-white">
+<span class="material-symbols-outlined text-2xl">close</span>
+</div>
+<h2 class="text-white text-lg font-bold leading-tight tracking-[-0.015em]">3 items selected</h2>
+<button class="flex items-center justify-center rounded-full px-3 py-1.5 hover:bg-white/5 text-primary text-base font-bold leading-normal tracking-[0.015em] shrink-0">
+                Select All
+            </button>
+</header>
+<!-- Segmented Control -->
+<div class="px-4 py-4 w-full">
+<div class="flex h-10 w-full items-center justify-center rounded-lg bg-[#1c2e36] p-1">
+<label class="flex cursor-pointer h-full grow items-center justify-center overflow-hidden rounded-md transition-all has-[:checked]:bg-surface-dark has-[:checked]:shadow-sm has-[:checked]:text-primary text-[#92bbc9] text-sm font-bold leading-normal">
+<span class="truncate">Scan History</span>
+<input checked="" class="invisible w-0 absolute" name="view-type" type="radio" value="Scan History"/>
+</label>
+<label class="flex cursor-pointer h-full grow items-center justify-center overflow-hidden rounded-md transition-all has-[:checked]:bg-surface-dark has-[:checked]:shadow-sm has-[:checked]:text-primary text-[#92bbc9] text-sm font-bold leading-normal">
+<span class="truncate">Design Studio</span>
+<input class="invisible w-0 absolute" name="view-type" type="radio" value="Design Studio"/>
+</label>
+</div>
+</div>
+<!-- List Content -->
+<div class="flex flex-col gap-3 px-4 w-full">
+<!-- List Item 1: Selected -->
+<div class="group flex items-center gap-4 rounded-xl bg-surface-dark p-3 shadow-sm border border-transparent hover:border-[#233f48] transition-colors cursor-pointer ring-1 ring-primary/20">
+<div class="shrink-0 pl-1">
+<input checked="" class="custom-checkbox h-6 w-6 rounded-full border-[#325a67] border-2 bg-transparent focus:ring-0 focus:ring-offset-0 focus:outline-none transition-all cursor-pointer" type="checkbox"/>
+</div>
+<div class="flex items-start gap-4 flex-1">
+<div class="bg-center bg-no-repeat bg-cover rounded-lg size-[70px] shrink-0 bg-neutral-800" data-alt="Nike Air Jordan 1 sneaker side view on dark background" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuB8kASe2vft8-M9_MezW-L9TXX4h2BluJQm4MZ9lBTf3mpE4Tx8IHFP5m088O6WCCcEmtXlahMV3vIoSdGuApYn8nhJzdnSlEq-JdBltnGPtDh8pqZ1jK4IStudTheRvKfRH_ZN9IrErmRnkl8hT7ivANiFpTFeFazomkdz2IXe82gI6BHeLzsoogGMLpkezu7wDVn2FhQgakNCvCy4SQQObR0jKHiKyl7WTW76dXiqG9yK5l0RE7Y8sOMfuN7wo_ko8q2uEbj7vu4");'></div>
+<div class="flex flex-col justify-center gap-0.5 py-1">
+<p class="text-white text-base font-bold leading-tight line-clamp-1">Nike Air Jordan 1</p>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[14px] text-green-400">verified</span>
+<p class="text-green-400 text-xs font-bold uppercase tracking-wide">Authentic</p>
+</div>
+<p class="text-[#92bbc9] text-xs font-medium leading-normal mt-0.5">Scanned: Oct 24, 2:00 PM</p>
+</div>
+</div>
+</div>
+<!-- List Item 2: Selected -->
+<div class="group flex items-center gap-4 rounded-xl bg-surface-dark p-3 shadow-sm border border-transparent hover:border-[#233f48] transition-colors cursor-pointer ring-1 ring-primary/20">
+<div class="shrink-0 pl-1">
+<input checked="" class="custom-checkbox h-6 w-6 rounded-full border-[#325a67] border-2 bg-transparent focus:ring-0 focus:ring-offset-0 focus:outline-none transition-all cursor-pointer" type="checkbox"/>
+</div>
+<div class="flex items-start gap-4 flex-1">
+<div class="bg-center bg-no-repeat bg-cover rounded-lg size-[70px] shrink-0 bg-neutral-800" data-alt="Luxury leather handbag close up texture" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAcPpInEH9EwPpvB-hgLG0RK-2b-FB91gR3tI2cSHqB8Ptwh37TTJMRd_IuR9fls-6Fz9_hfG3B2yVGHSMROSOqF427-tObQsZ7OPFv2O_YutOnf2z6Qez6XXhXtlATKrhkbY3-hVzJ19-cT35mbWFyR5ZvTThVGZ3TqBnnPCLYO3l9B_WM3jY_cjDOnif55BEYna6YTXFeqmbAv7xXWlKjkjA54QDo2faCOsC4mLxPpZONqwUg5DHoQvlCJ4W7dEVj3YKANNl7tQs");'></div>
+<div class="flex flex-col justify-center gap-0.5 py-1">
+<p class="text-white text-base font-bold leading-tight line-clamp-1">Chanel Classic Flap</p>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[14px] text-yellow-500">hourglass_top</span>
+<p class="text-yellow-500 text-xs font-bold uppercase tracking-wide">Pending</p>
+</div>
+<p class="text-[#92bbc9] text-xs font-medium leading-normal mt-0.5">Scanned: Yesterday, 4:15 PM</p>
+</div>
+</div>
+</div>
+<!-- List Item 3: Selected -->
+<div class="group flex items-center gap-4 rounded-xl bg-surface-dark p-3 shadow-sm border border-transparent hover:border-[#233f48] transition-colors cursor-pointer ring-1 ring-primary/20">
+<div class="shrink-0 pl-1">
+<input checked="" class="custom-checkbox h-6 w-6 rounded-full border-[#325a67] border-2 bg-transparent focus:ring-0 focus:ring-offset-0 focus:outline-none transition-all cursor-pointer" type="checkbox"/>
+</div>
+<div class="flex items-start gap-4 flex-1">
+<div class="bg-center bg-no-repeat bg-cover rounded-lg size-[70px] shrink-0 bg-neutral-800" data-alt="Design draft logo with geometric shapes" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCTTTXTtIjvPd0nLqgsZgqxCORN704I4EVwTgsKtRNpwHoPVT-l8dM83HgxDW_02Wu88eX2MEi3XeH5d0j8x2slUuvTIxXxGxYNCUw0-l7uvwX6q4RcXCbhwc3LNx6mn2ic0pIzE9T2tU2q7tZeZjfhE132SyxzJnENukZ-VfScAlPwPogdqvwZ5VOebKxpUjswYHUaxJiJoXSKcwS8bffCgBbyt3AxL0GGplqFgzP0m7LHOE9XvBHpRxcQpYzyYbmmQj3I8vVzuMg");'></div>
+<div class="flex flex-col justify-center gap-0.5 py-1">
+<p class="text-white text-base font-bold leading-tight line-clamp-1">Q3 Campaign Logo</p>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[14px] text-[#92bbc9]">edit_note</span>
+<p class="text-[#92bbc9] text-xs font-bold uppercase tracking-wide">Draft</p>
+</div>
+<p class="text-[#92bbc9] text-xs font-medium leading-normal mt-0.5">Modified: Oct 20, 9:30 AM</p>
+</div>
+</div>
+</div>
+<!-- List Item 4: Not Selected -->
+<div class="group flex items-center gap-4 rounded-xl bg-surface-dark p-3 shadow-sm border border-transparent hover:border-[#233f48] transition-colors cursor-pointer opacity-70 hover:opacity-100">
+<div class="shrink-0 pl-1">
+<input class="custom-checkbox h-6 w-6 rounded-full border-[#325a67] border-2 bg-transparent focus:ring-0 focus:ring-offset-0 focus:outline-none transition-all cursor-pointer" type="checkbox"/>
+</div>
+<div class="flex items-start gap-4 flex-1">
+<div class="bg-center bg-no-repeat bg-cover rounded-lg size-[70px] shrink-0 bg-neutral-800" data-alt="Luxury silver watch face" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuB31MSMOPVVK1qsFrJ8jsIOClzcjSMv0i06xqr3UZlhDEs7eRB-2PFv6WRGUzrzeXMZ9M0rFqbd6pX-HRAtAkrTVOSf0pyRbbrARS52JQOnPZIcloNrVhge02uUOiIPrkngdwmlGTJjrSkvojIm067zIHX06IItgPnHJzBvX-U16oNui1EgM-perjUsHWzG9v2dSiMYZWA4mcCOi_w9T3vpa5jWpo5l_JDITe1n7ofs6cymu0MnzYKY8CPkVa4jkNfRKwt88AhTbn4");'></div>
+<div class="flex flex-col justify-center gap-0.5 py-1">
+<p class="text-white text-base font-bold leading-tight line-clamp-1">Rolex Submariner</p>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[14px] text-red-400">error</span>
+<p class="text-red-400 text-xs font-bold uppercase tracking-wide">Counterfeit</p>
+</div>
+<p class="text-[#92bbc9] text-xs font-medium leading-normal mt-0.5">Scanned: Oct 15, 11:45 AM</p>
+</div>
+</div>
+</div>
+<!-- List Item 5: Not Selected -->
+<div class="group flex items-center gap-4 rounded-xl bg-surface-dark p-3 shadow-sm border border-transparent hover:border-[#233f48] transition-colors cursor-pointer opacity-70 hover:opacity-100">
+<div class="shrink-0 pl-1">
+<input class="custom-checkbox h-6 w-6 rounded-full border-[#325a67] border-2 bg-transparent focus:ring-0 focus:ring-offset-0 focus:outline-none transition-all cursor-pointer" type="checkbox"/>
+</div>
+<div class="flex items-start gap-4 flex-1">
+<div class="bg-center bg-no-repeat bg-cover rounded-lg size-[70px] shrink-0 bg-neutral-800" data-alt="Abstract colorful gradient artwork" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAJv6-PwlBf4UpLCW8h8-U1IvlPnVtJchG1un1PYbrDCLAeFj8Wh58N98YmJvt3zeUrSb0cpRCFRHEby9P04JsTQadlEAFB2T2oEl6cTlcW1TrPD6HX2m9WXkYnHfhihM6tnyXfhCbdPUiHZo7aDe_zTqyXa4bp2BDx9RQBeRsmOQDx7k5vJmo36dTARU-rzO6WhQ2yylnJkZQYOxfOEX0At4LR6j-rIrY4YTv-3nn9svEbWXO2vzDwvc60NrzpLrRfjQQtVHrAgpQ");'></div>
+<div class="flex flex-col justify-center gap-0.5 py-1">
+<p class="text-white text-base font-bold leading-tight line-clamp-1">Summer Collection V2</p>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[14px] text-[#92bbc9]">folder</span>
+<p class="text-[#92bbc9] text-xs font-bold uppercase tracking-wide">Archived</p>
+</div>
+<p class="text-[#92bbc9] text-xs font-medium leading-normal mt-0.5">Modified: Sep 28, 3:10 PM</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Sticky Bottom Action Bar -->
+<div class="fixed bottom-0 left-0 right-0 bg-[#111e22]/90 backdrop-blur-xl border-t border-[#233f48] pb-8 pt-4 px-6 z-30">
+<div class="flex justify-between items-center max-w-md mx-auto">
+<button class="flex flex-col items-center gap-1 group text-[#92bbc9] hover:text-white transition-colors">
+<div class="p-2 rounded-full group-hover:bg-white/10 transition-colors">
+<span class="material-symbols-outlined text-2xl">ios_share</span>
+</div>
+<span class="text-xs font-medium">Share</span>
+</button>
+<button class="flex flex-col items-center gap-1 group text-[#92bbc9] hover:text-white transition-colors">
+<div class="p-2 rounded-full group-hover:bg-white/10 transition-colors">
+<span class="material-symbols-outlined text-2xl">inventory_2</span>
+</div>
+<span class="text-xs font-medium">Archive</span>
+</button>
+<button class="flex flex-col items-center gap-1 group text-red-400 hover:text-red-300 transition-colors">
+<div class="p-2 rounded-full group-hover:bg-red-500/10 transition-colors">
+<span class="material-symbols-outlined text-2xl">delete</span>
+</div>
+<span class="text-xs font-medium">Delete</span>
+</button>
+</div>
+</div>
+</div>
+</body></html>

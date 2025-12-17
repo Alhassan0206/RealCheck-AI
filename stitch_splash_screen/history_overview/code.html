@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>History Overview</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#13b6ec",
+                        "background-light": "#f6f8f8",
+                        "background-dark": "#101d22",
+                        "surface-dark": "#192b32",
+                    },
+                    fontFamily: {
+                        "display": ["Manrope", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        /* Hide scrollbar for Chrome, Safari and Opera */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        /* Hide scrollbar for IE, Edge and Firefox */
+        .no-scrollbar {
+            -ms-overflow-style: none;  /* IE and Edge */
+            scrollbar-width: none;  /* Firefox */
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display antialiased text-slate-900 dark:text-white pb-24">
+<!-- Main Container -->
+<div class="relative flex min-h-screen w-full flex-col overflow-hidden max-w-md mx-auto shadow-2xl bg-background-light dark:bg-background-dark">
+<!-- Top App Bar -->
+<header class="flex items-center justify-between p-4 pt-6 bg-background-light dark:bg-background-dark sticky top-0 z-20">
+<h1 class="text-2xl font-extrabold leading-tight tracking-tight flex-1 dark:text-white">History</h1>
+<button class="flex items-center justify-center w-10 h-10 rounded-full hover:bg-black/5 dark:hover:bg-white/10 transition-colors">
+<span class="material-symbols-outlined text-2xl" style="font-variation-settings: 'FILL' 0, 'wght' 400;">settings</span>
+</button>
+</header>
+<!-- Segmented Control (Tabs) -->
+<div class="px-4 py-2 sticky top-[72px] z-10 bg-background-light dark:bg-background-dark/95 backdrop-blur-sm">
+<div class="flex h-12 w-full items-center justify-center rounded-lg bg-gray-200 dark:bg-surface-dark p-1">
+<!-- Tab: Scans (Active) -->
+<label class="relative flex h-full flex-1 cursor-pointer items-center justify-center rounded-[4px] transition-all">
+<input checked="" class="peer sr-only" name="history_tab" type="radio" value="scans"/>
+<span class="z-10 text-sm font-bold text-gray-500 peer-checked:text-white transition-colors">Scans</span>
+<div class="absolute inset-0 hidden h-full w-full rounded-[4px] bg-primary shadow-sm peer-checked:block transition-all"></div>
+</label>
+<!-- Tab: Designs -->
+<label class="relative flex h-full flex-1 cursor-pointer items-center justify-center rounded-[4px] transition-all">
+<input class="peer sr-only" name="history_tab" type="radio" value="designs"/>
+<span class="z-10 text-sm font-bold text-gray-500 peer-checked:text-white transition-colors">Designs</span>
+<div class="absolute inset-0 hidden h-full w-full rounded-[4px] bg-primary shadow-sm peer-checked:block transition-all"></div>
+</label>
+</div>
+</div>
+<!-- Filter Chips -->
+<div class="w-full overflow-x-auto no-scrollbar py-3 pl-4">
+<div class="flex gap-2 pr-4">
+<button class="flex h-8 min-w-[3rem] items-center justify-center rounded-full bg-surface-dark dark:bg-white border border-transparent px-4 text-sm font-semibold text-white dark:text-background-dark transition-colors">
+                    All
+                </button>
+<button class="flex h-8 items-center justify-center rounded-full bg-gray-200 dark:bg-surface-dark border border-transparent px-4 text-sm font-medium text-gray-600 dark:text-gray-300 hover:bg-gray-300 dark:hover:bg-[#233f48] transition-colors whitespace-nowrap">
+                    Verified
+                </button>
+<button class="flex h-8 items-center justify-center rounded-full bg-gray-200 dark:bg-surface-dark border border-transparent px-4 text-sm font-medium text-gray-600 dark:text-gray-300 hover:bg-gray-300 dark:hover:bg-[#233f48] transition-colors whitespace-nowrap">
+                    Counterfeit
+                </button>
+<button class="flex h-8 items-center justify-center rounded-full bg-gray-200 dark:bg-surface-dark border border-transparent px-4 text-sm font-medium text-gray-600 dark:text-gray-300 hover:bg-gray-300 dark:hover:bg-[#233f48] transition-colors whitespace-nowrap">
+                    Drafts
+                </button>
+<button class="flex h-8 items-center justify-center rounded-full bg-gray-200 dark:bg-surface-dark border border-transparent px-4 text-sm font-medium text-gray-600 dark:text-gray-300 hover:bg-gray-300 dark:hover:bg-[#233f48] transition-colors whitespace-nowrap">
+                    Published
+                </button>
+</div>
+</div>
+<!-- List Content -->
+<div class="flex flex-col gap-2 px-4 pb-4 mt-2">
+<p class="text-xs font-bold text-gray-400 dark:text-gray-500 uppercase tracking-wider mb-2">Today</p>
+<!-- List Item 1: Verified Scan -->
+<div class="group flex items-center justify-between rounded-xl bg-white dark:bg-surface-dark p-3 shadow-sm hover:shadow-md transition-all cursor-pointer">
+<div class="flex items-center gap-4">
+<div class="relative h-16 w-16 flex-shrink-0 overflow-hidden rounded-lg bg-gray-100 dark:bg-gray-800">
+<img alt="Nike Air Jordan sneakers side view" class="h-full w-full object-cover" data-alt="Nike Air Jordan sneakers side view" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB_uCe0wlsXtV0uPff12djDnaIJ3XTXs8T8j1z6K8MYX-XEn90H4VV6bx_AuKAXijefiQlb84Byv5rTZgq_wCE8aufCJwVcXwXW6yqkm7v7OwfBgjPOt_tH3gy5ERGt-N4VyuiJ65vtLPsYFaDRz1FpRCd7dliWltvcR85b-2b1gJTbPKYcd181FSZ6fmEYMmXgf9QM7ghpmM1o1AsvtY_rhsoJUKpRt6I73_jiQQvs6eu-glNgjyrJow2TUAqycHG04fugHxejkmo"/>
+</div>
+<div class="flex flex-col justify-center">
+<p class="text-base font-bold text-slate-900 dark:text-white line-clamp-1">Air Jordan 1 High</p>
+<p class="text-xs font-medium text-gray-500 dark:text-gray-400 mt-0.5">Scanned: 2:30 PM</p>
+</div>
+</div>
+<div class="flex flex-col items-end gap-1">
+<span class="inline-flex items-center gap-1 rounded-full bg-primary/10 px-2 py-1 text-xs font-bold text-primary">
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">verified</span>
+                        Verified
+                    </span>
+</div>
+</div>
+<!-- List Item 2: Counterfeit Scan -->
+<div class="group flex items-center justify-between rounded-xl bg-white dark:bg-surface-dark p-3 shadow-sm hover:shadow-md transition-all cursor-pointer">
+<div class="flex items-center gap-4">
+<div class="relative h-16 w-16 flex-shrink-0 overflow-hidden rounded-lg bg-gray-100 dark:bg-gray-800">
+<img alt="Designer leather handbag detail" class="h-full w-full object-cover opacity-90" data-alt="Designer leather handbag detail" src="https://lh3.googleusercontent.com/aida-public/AB6AXuApssJ05m0pka0kI65N7Pz40xrAna_ABVMqnsQq3zDFr-hTawoynSDS2i7yQLpQf3XKqn1bTbhXs1J7McRp96Y3bAV99ypVUWknshcviKiIRSyx7swA6uPo0eZpUDwrOLRDeoOucIPoHFiUr7fSTPDvj8aXzs_bPJw2lHktOwnwCYnXGxTlPLmdakaFoy93qiIzf3TPdSBSk4ry_Q4jSLPjdxwaYulxcCaklRCOW4U4nfMNGGfH8lbKu4t4nb0_hfuwm-3YODF8kB8"/>
+</div>
+<div class="flex flex-col justify-center">
+<p class="text-base font-bold text-slate-900 dark:text-white line-clamp-1">Gucci Handbag</p>
+<p class="text-xs font-medium text-gray-500 dark:text-gray-400 mt-0.5">Scanned: 10:15 AM</p>
+</div>
+</div>
+<div class="flex flex-col items-end gap-1">
+<span class="inline-flex items-center gap-1 rounded-full bg-red-500/10 px-2 py-1 text-xs font-bold text-red-500">
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">gpp_bad</span>
+                        Counterfeit
+                    </span>
+</div>
+</div>
+<p class="text-xs font-bold text-gray-400 dark:text-gray-500 uppercase tracking-wider mb-2 mt-4">Yesterday</p>
+<!-- List Item 3: Verified Scan -->
+<div class="group flex items-center justify-between rounded-xl bg-white dark:bg-surface-dark p-3 shadow-sm hover:shadow-md transition-all cursor-pointer">
+<div class="flex items-center gap-4">
+<div class="relative h-16 w-16 flex-shrink-0 overflow-hidden rounded-lg bg-gray-100 dark:bg-gray-800">
+<img alt="Luxury wrist watch on dark surface" class="h-full w-full object-cover" data-alt="Luxury wrist watch on dark surface" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBt8Spworx_s2oBeDdqmpfSh9tBToplaSwtBJrlAnMC8en8-fkSw3QB0_kdTy4HVMHSwOJjjMU11um_hXN6nIq3tUytpfFwSjHOCevtS22uJrICdslbQW5GtYQkWeV-TGAbsQJ3GHiDMk5KzA9TOISxX5GfBBmmg0UNo-gEtCMtf0t9XdlPyzRebDcE1v60zcKrcxRcFSxTHETIUJEaHcL53d934o5OrogE24G2mrCnXYa-a1eCFqzkNnSE6q5m2iC5Ky8sdnRyIh4"/>
+</div>
+<div class="flex flex-col justify-center">
+<p class="text-base font-bold text-slate-900 dark:text-white line-clamp-1">Rolex Submariner</p>
+<p class="text-xs font-medium text-gray-500 dark:text-gray-400 mt-0.5">Scanned: Oct 23, 4:45 PM</p>
+</div>
+</div>
+<div class="flex flex-col items-end gap-1">
+<span class="inline-flex items-center gap-1 rounded-full bg-primary/10 px-2 py-1 text-xs font-bold text-primary">
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">verified</span>
+                        Verified
+                    </span>
+</div>
+</div>
+<!-- List Item 4: Design Draft (Example of mixed content or filtered view) -->
+<div class="group flex items-center justify-between rounded-xl bg-white dark:bg-surface-dark p-3 shadow-sm hover:shadow-md transition-all cursor-pointer">
+<div class="flex items-center gap-4">
+<div class="relative h-16 w-16 flex-shrink-0 overflow-hidden rounded-lg bg-gray-100 dark:bg-gray-800 flex items-center justify-center">
+<div class="absolute inset-0 bg-gradient-to-br from-purple-500/20 to-blue-500/20" data-alt="Abstract gradient background"></div>
+<span class="material-symbols-outlined text-primary" style="font-size: 32px;">design_services</span>
+</div>
+<div class="flex flex-col justify-center">
+<p class="text-base font-bold text-slate-900 dark:text-white line-clamp-1">Summer Campaign '24</p>
+<p class="text-xs font-medium text-gray-500 dark:text-gray-400 mt-0.5">Modified: Oct 23, 11:00 AM</p>
+</div>
+</div>
+<div class="flex flex-col items-end gap-1">
+<span class="inline-flex items-center gap-1 rounded-full bg-gray-100 dark:bg-gray-700 px-2 py-1 text-xs font-bold text-gray-600 dark:text-gray-300">
+<span class="material-symbols-outlined text-[14px]">edit_note</span>
+                        Draft
+                    </span>
+</div>
+</div>
+<!-- List Item 5: Old Scan -->
+<div class="group flex items-center justify-between rounded-xl bg-white dark:bg-surface-dark p-3 shadow-sm hover:shadow-md transition-all cursor-pointer">
+<div class="flex items-center gap-4">
+<div class="relative h-16 w-16 flex-shrink-0 overflow-hidden rounded-lg bg-gray-100 dark:bg-gray-800">
+<img alt="Close up of designer sunglasses" class="h-full w-full object-cover" data-alt="Close up of designer sunglasses" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC1nNFYx-0X0jybXwPRLIBVCwC3oXlWxv_rFFJgBz8Jk9-2-lFLUh35pkXAdp0mrQixY-EvUM2YnhjeYQqE8xgVr86LdQbRx8U1TTNkZNIkmFZ8maq78BhVMxKgUNIdxvWJhIfFCxNtKMwaa4ZzZJJV4LIT9pP_6JDmkKe1ua7B3ElUnAkv9MRuwjtPZGT7MFnnU6utlj1zSuDcDTCV-Kl7aUTUjiutiJNSP_iVK0BveVGY3ZLroepl1wSB9cjRVX6cf9verfS0EzE"/>
+</div>
+<div class="flex flex-col justify-center">
+<p class="text-base font-bold text-slate-900 dark:text-white line-clamp-1">Ray-Ban Aviator</p>
+<p class="text-xs font-medium text-gray-500 dark:text-gray-400 mt-0.5">Scanned: Oct 23, 9:20 AM</p>
+</div>
+</div>
+<div class="flex flex-col items-end gap-1">
+<span class="inline-flex items-center gap-1 rounded-full bg-primary/10 px-2 py-1 text-xs font-bold text-primary">
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">verified</span>
+                        Verified
+                    </span>
+</div>
+</div>
+</div>
+<!-- Bottom Navigation Bar -->
+<nav class="fixed bottom-0 left-0 right-0 z-50 border-t border-gray-200 dark:border-gray-800 bg-background-light dark:bg-background-dark/95 backdrop-blur-lg pb-safe">
+<div class="flex h-16 items-center justify-around max-w-md mx-auto">
+<a class="flex flex-1 flex-col items-center justify-center gap-1 text-gray-400 hover:text-gray-600 dark:hover:text-gray-200 transition-colors" href="#">
+<span class="material-symbols-outlined text-[24px]">home</span>
+<span class="text-[10px] font-medium">Home</span>
+</a>
+<a class="flex flex-1 flex-col items-center justify-center gap-1 text-primary" href="#">
+<span class="material-symbols-outlined text-[24px] filled" style="font-variation-settings: 'FILL' 1;">history</span>
+<span class="text-[10px] font-bold">History</span>
+</a>
+<div class="relative -top-5">
+<button class="flex h-14 w-14 items-center justify-center rounded-full bg-primary shadow-lg shadow-primary/30 text-white hover:bg-primary/90 transition-transform hover:scale-105 active:scale-95">
+<span class="material-symbols-outlined text-[28px]">qr_code_scanner</span>
+</button>
+</div>
+<a class="flex flex-1 flex-col items-center justify-center gap-1 text-gray-400 hover:text-gray-600 dark:hover:text-gray-200 transition-colors" href="#">
+<span class="material-symbols-outlined text-[24px]">design_services</span>
+<span class="text-[10px] font-medium">Studio</span>
+</a>
+<a class="flex flex-1 flex-col items-center justify-center gap-1 text-gray-400 hover:text-gray-600 dark:hover:text-gray-200 transition-colors" href="#">
+<span class="material-symbols-outlined text-[24px]">person</span>
+<span class="text-[10px] font-medium">Profile</span>
+</a>
+</div>
+</nav>
+</div>
+</body></html>
