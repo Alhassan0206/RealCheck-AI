@@ -16,7 +16,11 @@ import ScanUploadScreen from './src/screens/ScanUploadScreen';
 import ScanProcessingScreen from './src/screens/ScanProcessingScreen';
 import ScanResultScreen from './src/screens/ScanResultScreen';
 import ScanDetailScreen from './src/screens/ScanDetailScreen';
+import CounterfeitResultScreen from './src/screens/CounterfeitResultScreen';
+import ScanErrorScreen from './src/screens/ScanErrorScreen';
 import CreateEntryScreen from './src/screens/CreateEntryScreen';
+import FeatureHighlightsScreen from './src/screens/FeatureHighlightsScreen';
+import ExportOptionsScreen from './src/screens/ExportOptionsScreen';
 import TemplateSelectionScreen from './src/screens/TemplateSelectionScreen';
 import PromptBrandInputScreen from './src/screens/PromptBrandInputScreen';
 import GenerationProcessingScreen from './src/screens/GenerationProcessingScreen';
@@ -64,6 +68,7 @@ function HomeStackScreen() {
       <HomeStack.Screen name="Notifications" component={NotificationsScreen} />
       <HomeStack.Screen name="CreditStatus" component={CreditStatusScreen} />
       <HomeStack.Screen name="HomeSearch" component={HomeSearchScreen} />
+      <HomeStack.Screen name="FeatureHighlights" component={FeatureHighlightsScreen} />
     </HomeStack.Navigator>
   );
 }
@@ -74,6 +79,8 @@ function ScanStackScreen() {
       <ScanStack.Screen name="ScanUpload" component={ScanUploadScreen} />
       <ScanStack.Screen name="ScanProcessing" component={ScanProcessingScreen} />
       <ScanStack.Screen name="ScanResult" component={ScanResultScreen} />
+      <ScanStack.Screen name="CounterfeitResult" component={CounterfeitResultScreen} />
+      <ScanStack.Screen name="ScanError" component={ScanErrorScreen} />
       <ScanStack.Screen name="ScanDetail" component={ScanDetailScreen} />
     </ScanStack.Navigator>
   );
@@ -99,6 +106,7 @@ function HistoryStackScreen() {
       <HistoryStack.Screen name="HistoryOverview" component={HistoryOverviewScreen} />
       <HistoryStack.Screen name="HistoryDetail" component={HistoryDetailScreen} />
       <HistoryStack.Screen name="BulkActions" component={BulkActionsScreen} />
+      <HistoryStack.Screen name="ExportOptions" component={ExportOptionsScreen} />
     </HistoryStack.Navigator>
   );
 }
