@@ -7,10 +7,41 @@ const { generateToken, JWT_SECRET } = require('../middleware/auth');
 
 const router = express.Router();
 
+const { OAuth2Client } = require('google-auth-library');
+const GOOGLE_CLIENT_ID = process.env.GOOGLE_CLIENT_ID || 'mock-client-id';
+const client = new OAuth2Client(GOOGLE_CLIENT_ID);
+
 router.post('/google', async (req, res) => {
   try {
-    const { idToken, email, name, picture, googleId } = req.body;
+    const { idToken, email: emailFromClient, name: nameFromClient, picture: pictureFromClient } = req.body;
     
+    let email = emailFromClient;
+    let name = nameFromClient;
+    let picture = pictureFromClient;
+    let googleId = 'mock-google-id';
+
+    // Verify Google Token if CLIENT_ID is present and not a mock
+    if (GOOGLE_CLIENT_ID !== 'mock-client-id') {
+      try {
+        const ticket = await client.verifyIdToken({
+            idToken,
+            audience: GOOGLE_CLIENT_ID, 
+        });
+        const payload = ticket.getPayload();
+        email = payload.email;
+        name = payload.name;
+        picture = payload.picture;
+        googleId = payload.sub;
+      } catch (verifyError) {
+        console.error('Google Token Verify Error:', verifyError);
+        return res.status(401).json({ error: 'Invalid Google Token' });
+      }
+    } else {
+        // [WARNING] In mock mode, we still trust the client for now to allow development proceeding without keys.
+        // In production, this block MUST be removed.
+        console.warn('Running in MOCK AUTH mode. Trusting client values.');
+    }
+
     if (!email) {
       return res.status(400).json({ error: 'Email is required' });
     }

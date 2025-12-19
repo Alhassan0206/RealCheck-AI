@@ -38,6 +38,9 @@ router.get('/:id', authMiddleware, async (req, res) => {
   }
 });
 
+const axios = require('axios');
+const HIVE_API_KEY = process.env.HIVE_API_KEY;
+
 router.post('/analyze', authMiddleware, async (req, res) => {
   try {
     const { imageUrl, imageData, category } = req.body;
@@ -46,20 +49,47 @@ router.post('/analyze', authMiddleware, async (req, res) => {
       return res.status(402).json({ error: 'Insufficient credits' });
     }
 
-    const isAuthentic = Math.random() > 0.3;
-    const confidence = isAuthentic 
-      ? Math.floor(Math.random() * 20) + 80
-      : Math.floor(Math.random() * 30) + 10;
+    let isAuthentic = false;
+    let confidence = 0;
+    let metadata = { category: category || 'general', analyzedAt: new Date().toISOString() };
+
+    if (!HIVE_API_KEY) {
+      console.warn('Using MOCK Hive AI Logic (No API Key found)');
+      // Mock logic
+      // Simulate 10% error rate for Screen 30 testing
+      if (Math.random() < 0.1) {
+        return res.status(503).json({ error: 'Scan timed out. Please try again.', code: 'SCAN_TIMEOUT' });
+      }
+
+      isAuthentic = Math.random() > 0.3; // 70% real, 30% fake
+      confidence = isAuthentic
+        ? Math.floor(Math.random() * 20) + 80 // 80-99%
+        : Math.floor(Math.random() * 30) + 10; // 10-39%
+    } else {
+      // Real Hive AI Call
+      try {
+        // Example Hive API call (conceptual - requires specific endpoint docs)
+        const response = await axios.post('https://api.thehive.ai/api/v2/task/sync', {
+          image_url: imageUrl
+        }, {
+          headers: { 'Authorization': `token ${HIVE_API_KEY}` }
+        });
+        // process response...
+        // logic placeholder for real response parsing
+        isAuthentic = true;
+        confidence = 95;
+      } catch (apiError) {
+        console.error('Hive AI connection failed:', apiError);
+        return res.status(503).json({ error: 'AI Service Unavailable', code: 'SCAN_ERROR' });
+      }
+    }
 
     const [newScan] = await db.insert(scans).values({
       userId: req.userId,
       imageUrl: imageUrl || '',
       result: isAuthentic ? 'authentic' : 'fake',
       confidence,
-      metadata: { 
-        category: category || 'general',
-        analyzedAt: new Date().toISOString()
-      }
+      metadata
     }).returning();
 
     const newCredits = req.user.credits - 1;

@@ -38,9 +38,14 @@ router.get('/:id', authMiddleware, async (req, res) => {
   }
 });
 
+const axios = require('axios');
+const OPENAI_API_KEY = process.env.OPENAI_API_KEY;
+const REPLICATE_API_TOKEN = process.env.REPLICATE_API_TOKEN;
+const REMOVE_BG_API_KEY = process.env.REMOVE_BG_API_KEY;
+
 router.post('/generate', authMiddleware, async (req, res) => {
   try {
-    const { prompt, templateId, brandKitId, type } = req.body;
+    const { prompt, templateId, brandKitId, type, provider } = req.body;
     const creditCost = 5;
 
     if (req.user.credits < creditCost) {
@@ -54,6 +59,32 @@ router.post('/generate', authMiddleware, async (req, res) => {
         .where(eq(brandKits.id, brandKitId));
     }
 
+    let imageUrl = 'https://via.placeholder.com/400x600?text=AI+Generated+Design';
+
+    // AI Generation Logic
+    if (provider === 'openai' && OPENAI_API_KEY) {
+      try {
+        const response = await axios.post('https://api.openai.com/v1/images/generations', {
+          prompt: prompt,
+          n: 1,
+          size: "1024x1024"
+        }, {
+          headers: { 'Authorization': `Bearer ${OPENAI_API_KEY}` }
+        });
+        imageUrl = response.data.data[0].url;
+      } catch (e) {
+        console.error('OpenAI Error', e);
+        return res.status(503).json({ error: 'Design generation failed' });
+      }
+    } else if (REPLICATE_API_TOKEN) {
+      // Replicate logic placeholder
+      console.log('Using Replicate (Placeholder)');
+    } else {
+      console.warn('Using MOCK Design Logic');
+      // Simulate delay
+      await new Promise(resolve => setTimeout(resolve, 2000));
+    }
+
     const [newDesign] = await db.insert(designs).values({
       userId: req.userId,
       title: prompt ? prompt.substring(0, 50) : 'New Design',
@@ -62,7 +93,7 @@ router.post('/generate', authMiddleware, async (req, res) => {
       templateId,
       brandKitId: brandKitId || null,
       status: 'completed',
-      imageUrl: 'https://via.placeholder.com/400x600?text=AI+Generated+Design'
+      imageUrl: imageUrl
     }).returning();
 
     const newCredits = req.user.credits - creditCost;
@@ -88,10 +119,45 @@ router.post('/generate', authMiddleware, async (req, res) => {
   }
 });
 
+router.post('/remove-bg', authMiddleware, async (req, res) => {
+  try {
+    const { imageUrl } = req.body;
+    // Cost: 2 credits
+    if (req.user.credits < 2) return res.status(402).json({ error: 'Insufficient credits' });
+
+    let processedUrl = imageUrl;
+
+    if (REMOVE_BG_API_KEY) {
+      // Real remove.bg logic would go here
+      // const response = await axios.post(...)
+    } else {
+      console.warn('Using MOCK Remove BG Logic');
+      // Just return same URL or a transparent placeholder
+      processedUrl = imageUrl;
+    }
+
+    const newCredits = req.user.credits - 2;
+    await db.update(users).set({ credits: newCredits }).where(eq(users.id, req.userId));
+    await db.insert(creditTransactions).values({
+      userId: req.userId,
+      amount: -2,
+      action: 'remove_bg',
+      description: `Background removal`,
+      balanceAfter: newCredits
+    });
+
+    res.json({ success: true, imageUrl: processedUrl, creditsRemaining: newCredits });
+
+  } catch (error) {
+    console.error('Remove BG error:', error);
+    res.status(500).json({ error: 'Failed to remove background' });
+  }
+});
+
 router.put('/:id', authMiddleware, async (req, res) => {
   try {
     const { title, status, imageUrl } = req.body;
-    
+
     const [design] = await db.select()
       .from(designs)
       .where(eq(designs.id, parseInt(req.params.id)));

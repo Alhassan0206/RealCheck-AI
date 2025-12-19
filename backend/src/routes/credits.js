@@ -47,17 +47,81 @@ router.get('/plans', (req, res) => {
   res.json(SUBSCRIPTION_PLANS);
 });
 
+const Stripe = require('stripe');
+const STRIPE_SECRET_KEY = process.env.STRIPE_SECRET_KEY;
+const PAYSTACK_SECRET_KEY = process.env.PAYSTACK_SECRET_KEY;
+
+// Initialize Stripe if key exists
+const stripe = STRIPE_SECRET_KEY ? Stripe(STRIPE_SECRET_KEY) : null;
+
+router.post('/create-payment-intent', authMiddleware, async (req, res) => {
+  try {
+    const { packageId } = req.body;
+    const creditPackage = CREDIT_PACKAGES.find(p => p.id === packageId);
+    if (!creditPackage) return res.status(400).json({ error: 'Invalid package' });
+
+    if (!stripe) {
+      console.warn('Using MOCK Stripe Logic');
+      return res.json({
+        clientSecret: 'mock_secret_' + Math.random().toString(36),
+        mock: true
+      });
+    }
+
+    const paymentIntent = await stripe.paymentIntents.create({
+      amount: Math.round(creditPackage.price * 100), // cents
+      currency: 'usd',
+      metadata: { userId: req.userId, packageId: creditPackage.id }
+    });
+
+    res.json({ clientSecret: paymentIntent.client_secret });
+  } catch (error) {
+    console.error('Stripe error:', error);
+    res.status(500).json({ error: 'Payment initialization failed' });
+  }
+});
+
+router.post('/initialize-transaction', authMiddleware, async (req, res) => {
+  try {
+    const { packageId, email } = req.body;
+    const creditPackage = CREDIT_PACKAGES.find(p => p.id === packageId);
+    if (!creditPackage) return res.status(400).json({ error: 'Invalid package' });
+
+    if (!PAYSTACK_SECRET_KEY) {
+      console.warn('Using MOCK Paystack Logic');
+      return res.json({
+        authorization_url: 'https://checkout.paystack.com/mock-page',
+        access_code: 'mock_access_' + Math.random().toString(36),
+        reference: 'mock_ref_' + Date.now(),
+        mock: true
+      });
+    }
+
+    // Real Paystack logic would use axios to call https://api.paystack.co/transaction/initialize
+    // Placeholder for brevity as axios isn't imported here yet
+    res.json({ error: 'Paystack integration pending axios import' });
+
+  } catch (error) {
+    console.error('Paystack error:', error);
+    res.status(500).json({ error: 'Payment initialization failed' });
+  }
+});
+
+// Original /purchase is used for "Simulating" success in mock mode or webhook callback
 router.post('/purchase', authMiddleware, async (req, res) => {
   try {
-    const { packageId, paymentMethod } = req.body;
-    
+    const { packageId, paymentMethod, paymentId } = req.body;
+
+    // In a real app, we would VERIFY paymentId with Stripe/Paystack here before awarding credits
+
     const creditPackage = CREDIT_PACKAGES.find(p => p.id === packageId);
+
     if (!creditPackage) {
       return res.status(400).json({ error: 'Invalid package' });
     }
 
     const newCredits = req.user.credits + creditPackage.credits;
-    
+
     await db.update(users)
       .set({ credits: newCredits, updatedAt: new Date() })
       .where(eq(users.id, req.userId));
@@ -85,7 +149,7 @@ router.post('/purchase', authMiddleware, async (req, res) => {
 router.post('/subscribe', authMiddleware, async (req, res) => {
   try {
     const { planId, paymentMethod } = req.body;
-    
+
     const plan = SUBSCRIPTION_PLANS.find(p => p.id === planId);
     if (!plan) {
       return res.status(400).json({ error: 'Invalid plan' });
@@ -106,12 +170,12 @@ router.post('/subscribe', authMiddleware, async (req, res) => {
     }).returning();
 
     const newCredits = req.user.credits + plan.creditsPerMonth;
-    
+
     await db.update(users)
-      .set({ 
-        plan: plan.id, 
+      .set({
+        plan: plan.id,
         credits: newCredits,
-        updatedAt: new Date() 
+        updatedAt: new Date()
       })
       .where(eq(users.id, req.userId));
 
@@ -160,7 +224,7 @@ router.post('/deduct', authMiddleware, async (req, res) => {
     }
 
     const newCredits = req.user.credits - deductAmount;
-    
+
     await db.update(users)
       .set({ credits: newCredits, updatedAt: new Date() })
       .where(eq(users.id, req.userId));
